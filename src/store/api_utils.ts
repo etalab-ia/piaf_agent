@@ -9,7 +9,12 @@ export async function callInferenceAsync(question?: string) {
   }
   interface InferenceResult {
     question: string;
-    answers: Array<any>;
+    answers: Array<Answer>;
+  }
+  interface Answer {
+    answer: string;
+    context: string;
+    probability: number;
   }
 
   let res: ServerResponse

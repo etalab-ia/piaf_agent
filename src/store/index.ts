@@ -8,22 +8,27 @@ export default new Vuex.Store({
   state: {
     question : undefined,
     answer : undefined,
+    answers : [],
   },
   mutations: {
     setQuestion(state,newQuestion) {
       state.question = newQuestion
     },
-    setAnswer(state,newAnswer) {
-      state.answer = newAnswer
+    setAnswers(state,res) {
+      state.answers = res[0].answers
+    },
+    setAnswer(state) {
+      if (state.answers.length > 0) {
+        state.answer = state.answers[0]
+      }
     },
   },
   actions: {
     async callInference({ commit, state }) {
       const a = await callInferenceAsync(state.question)
       if(a){
-        console.log(a[0].answers[0]);
-
-        commit('setAnswer', a[0].answers[0])
+        commit('setAnswers', a)
+        commit('setAnswer', a)
         return true
       }else{
         // eslint-disable-next-line
