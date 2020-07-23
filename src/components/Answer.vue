@@ -39,17 +39,22 @@ export default Vue.extend({
     Spinner
   },
   methods: {
-    printAnswer() {
-      const paragraph = this.$refs.answ
+    printAnswer(): void{
+      const paragraph: any = this.$refs.answ
       const selector = new SelectText(paragraph)
+      console.log(this.answer);
       selector.addSelection(paragraph.textContent.indexOf(this.answer.answer),this.answer.answer.length)
 
       // here we have to clone this to remove the addeventlistner that selects text
       const elClone = selector.container.cloneNode(true);
       paragraph.parentNode.replaceChild(elClone, paragraph);
     },
+    // here we have to define unsubscribe (otherwise, Typescirpt says this has no funciton such as unsubscribe)
+    unsubscribe(): void{
+      console.log('here');
+    },
   },
-  beforeDestroy() {
+  beforeDestroy(): void {
     this.unsubscribe();
   },
   created: function() {
