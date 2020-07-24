@@ -10,7 +10,7 @@
       <div v-else class="mb-10">
         <p class="italic">Indice de conficance trop faible : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %. Nous ne pouvons afficher la réponse.</p>
       </div>
-      <a href="/" class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1">Poser une nouvelle question</a>
+      <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
     </div>
     <div v-else>
     <Spinner/>
