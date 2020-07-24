@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-no-publicPath": "vue-cli-service build --mode developpement",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
