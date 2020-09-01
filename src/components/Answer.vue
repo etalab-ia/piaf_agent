@@ -6,6 +6,7 @@
         <div class="alignLeft paragraph w-11/12 max-w-screen-md mx-auto mt-8" ref="answ">
           <span>{{answer.context}}</span>
         </div>
+        <a v-if="answer.meta.link" class="text-blue-800 hover:text-blue-600 underline" :href="answer.meta.link">lien vers la fiche</a>
       </div>
       <div v-else class="mb-10">
         <p class="italic">Indice de confiance trop faible : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %. Nous ne pouvons afficher la réponse.</p>
