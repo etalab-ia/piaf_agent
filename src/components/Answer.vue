@@ -65,10 +65,12 @@ export default Vue.extend({
       if (mutation.type === 'setAnswer') {
         if (state.answer) {
           this.ready = true
-          if (Number(state.answer.probability) > 0.90) {
+          if (Number(state.answer.probability) > 0.80) {
             this.trustable = true
             // we need the timeout otherwise $refs is undefined
             setTimeout(() => this.printAnswer() , 500)
+          }else{
+            console.log(this.answer);
           }
 
         }
