@@ -2,11 +2,11 @@
   <div class="mt-10">
     <div v-if="ready">
       <div v-if="trustable" class="mb-10">
-        <p class="italic">Indice de conficance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %</p>
+        <p class="italic">Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %</p>
         <div class="alignLeft paragraph w-11/12 max-w-screen-md mx-auto mt-8" ref="answ">
           <span>{{answer.context}}</span>
         </div>
-        <a v-if="answer.meta.link" class="text-blue-800 hover:text-blue-600 underline" :href="answer.meta.link">lien vers la fiche</a>
+        <a v-if="answer.meta.link" class="text-blue-800 hover:text-blue-600 underline" :href="answer.meta.link" target="_blank">lien vers la fiche</a>
       </div>
       <div v-else class="mb-10">
         <p class="italic">Indice de confiance trop faible : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %. Nous ne pouvons afficher la réponse.</p>
@@ -65,7 +65,7 @@ export default Vue.extend({
       if (mutation.type === 'setAnswer') {
         if (state.answer) {
           this.ready = true
-          if (Number(state.answer.probability) > 0.80) {
+          if (Number(state.answer.probability) > 0.50) {
             this.trustable = true
             // we need the timeout otherwise $refs is undefined
             setTimeout(() => this.printAnswer() , 500)
