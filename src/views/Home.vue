@@ -15,6 +15,9 @@ export default {
   components: {
     Head,
     Question
-  }
+  },
+  mounted: function() {
+    this.$store.dispatch('reboot');
+  },
 }
 </script>
