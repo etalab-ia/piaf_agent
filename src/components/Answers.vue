@@ -1,7 +1,7 @@
 <template>
   <div class="mt-10">
-    <div v-if="ready && answer">
-      <Answer :answer="answer"/>
+    <div v-if="ready && answers.length > 0">
+      <Answer :answer="answer" v-for="answer in answers" :key="answer.probability"/>
       <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
     </div>
     <div v-else>
@@ -24,7 +24,7 @@ export default Vue.extend({
   }),
   computed: {
     ...mapState([
-     'answer',
+     'answers'
    ]),
  },
   components: {
