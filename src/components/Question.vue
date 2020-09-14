@@ -25,7 +25,7 @@ export default Vue.extend({
    onClick(){
      if(this.newQuestion.length >= 200) {return false}
      this.$store.commit('setQuestion',this.newQuestion)
-     this.$router.push('Answer')
+     this.$router.push('Answers')
    }
   },
 
