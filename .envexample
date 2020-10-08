@@ -1,1 +1,2 @@
 VUE_APP_API_URL=https://myapi.com/
+VUE_APP_PUBLIC_PATH=/base_app_uri/
