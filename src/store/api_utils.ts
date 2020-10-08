@@ -19,7 +19,7 @@ export async function callInferenceAsync(question?: string) {
 
   let res: ServerResponse
   try {
-    res = await axios.post('https://piaf.datascience.etalab.studio/models/1/doc-qa', {
+    res = await axios.post(process.env.VUE_APP_API_URL, {
         "questions": [
           question
         ],

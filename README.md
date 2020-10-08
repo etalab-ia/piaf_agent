@@ -30,4 +30,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Edit the `src/.env` file (you can find an example here `src/.envexample`)
 
-API_URL: endpoint you want this app to talk to
+VUE_APP_API_URL: endpoint you want this app to talk to
