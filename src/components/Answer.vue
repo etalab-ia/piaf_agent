@@ -1,47 +1,36 @@
 <template>
-  <div class="mt-10">
-    <div v-if="ready">
-      <div v-if="trustable" class="mb-10">
-        <p class="italic">Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %</p>
-        <div class="alignLeft paragraph w-11/12 max-w-screen-md mx-auto mt-8" ref="answ">
-          <span>{{answer.context}}</span>
-        </div>
-        <a v-if="answer.meta.link" class="text-blue-800 hover:text-blue-600 underline" :href="answer.meta.link" target="_blank">lien vers la fiche</a>
+  <div v-if="Number(answer.probability) > 0.20" class="mb-10">
+    <div class="alignLeft paragraph w-11/12 max-w-screen-md mx-auto mt-8 p-2 text-left border-blue-400 border-2 rounded border-solid relative">
+      <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()">
+        Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %
+      </p>
+      <div ref="answ">
+        <span>{{answer.context}}</span>...
       </div>
-      <div v-else class="mb-10">
-        <p class="italic">Indice de confiance trop faible : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %. Nous ne pouvons afficher la réponse.</p>
-      </div>
-      <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
+      <a v-if="answer.meta && answer.meta.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="answer.meta.link" target="_blank"> <i></i>lien vers la fiche</a>
     </div>
-    <div v-else>
-    <Spinner/>
-    </div>
+  </div>
+  <div v-else class="mb-10">
+    <p class="italic">Indice de confiance trop faible : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %. Nous ne pouvons afficher la réponse.</p>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { mapState } from 'vuex'
-import Spinner from './Spinner.vue'
+
 import SelectText from '@vinyll/selecttext'
 
 export default Vue.extend({
   name: 'Answer',
-  data: () => ({
-    ready: false,
-    trustable: false,
-  }),
-  computed: {
-    ...mapState([
-     'answer',
-   ]),
- },
-  components: {
-    Spinner
-  },
+  props: [
+    'answer',
+  ],
   methods: {
     printAnswer(): void{
       const paragraph: any = this.$refs.answ
+      if (!paragraph) {
+        return
+      }
       const selector = new SelectText(paragraph)
       console.log(this.answer);
       selector.addSelection(paragraph.textContent.indexOf(this.answer.answer),this.answer.answer.length)
@@ -54,30 +43,33 @@ export default Vue.extend({
     unsubscribe(): void{
       console.log('here');
     },
+    bgColorTrust(): string {
+      let bgColor: string
+      if (this.answer.probability < 0.5) {
+        bgColor = 'bg-red-700'
+      } else if (this.answer.probability < 0.6) {
+        bgColor = 'bg-orange-700'
+      } else if (this.answer.probability < 0.7) {
+        bgColor = 'bg-yellow-600'
+      } else if (this.answer.probability < 0.8) {
+        bgColor = 'bg-teal-700'
+      } else if (this.answer.probability < 0.9) {
+        bgColor = 'bg-green-600'
+      } else {
+        bgColor = 'bg-green-800'
+      }
+      return bgColor
+    },
   },
   beforeDestroy(): void {
     this.unsubscribe();
   },
-  created: function() {
-    this.$store.dispatch('callInference');
-
-    this.unsubscribe = this.$store.subscribe((mutation, state) => {
-      if (mutation.type === 'setAnswer') {
-        if (state.answer) {
-          this.ready = true
-          if (Number(state.answer.probability) > 0.50) {
-            this.trustable = true
-            // we need the timeout otherwise $refs is undefined
-            setTimeout(() => this.printAnswer() , 500)
-          }else{
-            console.log(this.answer);
-          }
-
-        }
-      }
-    });
+  mounted: function() {
+    this.$nextTick(function () {
+      // execute this only after the HTML get fully rendered
+      this.printAnswer()
+    })
   },
-
 });
 </script>
 
@@ -103,5 +95,9 @@ export default Vue.extend({
 .paragraph span.selected {
   color: #ffffff;
   background-color: #4169e1;
+}
+.link {
+  bottom: -15px;
+  right: 10px;
 }
 </style>

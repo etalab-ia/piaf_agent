@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
-import Answer from '../views/Answer.vue'
+import Answers from '../views/Answers.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +12,9 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/Answer',
-    name: 'Answer',
-    component: Answer
+    path: '/Answers',
+    name: 'Answers',
+    component: Answers
   },
   {
     path: '/about',

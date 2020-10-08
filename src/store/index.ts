@@ -15,11 +15,13 @@ export default new Vuex.Store({
       state.question = newQuestion
     },
     setAnswers(state,res) {
-      state.answers = res[0].answers
+      state.answers = res
     },
     setAnswer(state) {
       if (state.answers.length > 0) {
         state.answer = state.answers[0]
+      }else{
+        state.answer = undefined
       }
     },
   },
@@ -27,7 +29,7 @@ export default new Vuex.Store({
     async callInference({ commit, state }) {
       const a = await callInferenceAsync(state.question)
       if(a){
-        commit('setAnswers', a)
+        commit('setAnswers', a[0].answers)
         commit('setAnswer', a)
         return true
       }else{
@@ -35,6 +37,10 @@ export default new Vuex.Store({
         console.log('problem loading the new paragraph');
         return false
       }
+    },
+    async reboot({ commit }) {
+      commit('setAnswers', [])
+      commit('setAnswer', undefined)
     },
   },
   modules: {

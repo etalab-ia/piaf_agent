@@ -5,7 +5,7 @@ export async function callInferenceAsync(question?: string) {
     data: ServerData;
   }
   interface ServerData {
-    results: InferenceResult;
+    results: Array<InferenceResult>;
   }
   interface InferenceResult {
     question: string;
@@ -23,7 +23,7 @@ export async function callInferenceAsync(question?: string) {
         "questions": [
           question
         ],
-        "top_k_reader": 1,
+        "top_k_reader": 3,
         "top_k_retriever": 5
       }
     );
