@@ -22,9 +22,16 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Run with docker
+A Dockfile for running your app in production is already prepared.
+You only have to build the image and run it, typing :
 
+```bash
+docker build -t piafagent_image .
+docker run -d -p 8081:80 --name piafagent piafagent_image
+```
+
+Note: the 8081 port will of course depend on your nginx / apache configuration.
 
 ## Project Configuration
 
