@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export async function callInferenceAsync(question?: string) {
+export async function callInferenceAsync(question?: string, filters?: any) {
   interface ServerResponse {
     data: ServerData;
   }
@@ -23,6 +23,7 @@ export async function callInferenceAsync(question?: string) {
         "questions": [
           question
         ],
+        "filters": filters,
         "top_k_reader": 3,
         "top_k_retriever": 5
       }

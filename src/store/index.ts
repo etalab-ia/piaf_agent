@@ -9,6 +9,7 @@ export default new Vuex.Store({
     question : undefined,
     answer : undefined,
     answers : [],
+    filters : {},
   },
   mutations: {
     setQuestion(state,newQuestion) {
@@ -17,20 +18,15 @@ export default new Vuex.Store({
     setAnswers(state,res) {
       state.answers = res
     },
-    setAnswer(state) {
-      if (state.answers.length > 0) {
-        state.answer = state.answers[0]
-      }else{
-        state.answer = undefined
-      }
+    setFilters(state,res) {
+      state.filters = res
     },
   },
   actions: {
     async callInference({ commit, state }) {
-      const a = await callInferenceAsync(state.question)
+      const a = await callInferenceAsync(state.question, state.filters)
       if(a){
         commit('setAnswers', a[0].answers)
-        commit('setAnswer', a)
         return true
       }else{
         // eslint-disable-next-line
@@ -40,7 +36,7 @@ export default new Vuex.Store({
     },
     async reboot({ commit }) {
       commit('setAnswers', [])
-      commit('setAnswer', undefined)
+      commit('setFilters', {})
     },
   },
   modules: {

@@ -1,6 +1,7 @@
 <template>
   <div class="mt-10">
     <div v-if="ready && answers.length > 0">
+      <Filters/>
       <Answer :answer="answer" v-for="answer in answers" :key="answer.probability"/>
       <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
     </div>
@@ -14,8 +15,8 @@
 import Vue from 'vue';
 import { mapState } from 'vuex'
 import Spinner from './Spinner.vue'
+import Filters from './Filters.vue'
 import Answer from './Answer.vue'
-import SelectText from '@vinyll/selecttext'
 
 export default Vue.extend({
   name: 'Answers',
@@ -29,7 +30,8 @@ export default Vue.extend({
  },
   components: {
     Spinner,
-    Answer
+    Answer,
+    Filters
   },
   methods: {
     // here we have to define unsubscribe (otherwise, Typescirpt says this has no funciton such as unsubscribe)
@@ -44,7 +46,7 @@ export default Vue.extend({
     this.$store.dispatch('callInference');
 
     this.unsubscribe = this.$store.subscribe((mutation, state) => {
-      if (mutation.type === 'setAnswer') {
+      if (mutation.type === 'setAnswers') {
         if (state.answer) {
           this.ready = true
         }
