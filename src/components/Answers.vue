@@ -1,9 +1,17 @@
 <template>
   <div class="mt-10">
-    <div v-if="ready && answers.length > 0">
-      <Filters/>
-      <Answer :answer="answer" v-for="answer in answers" :key="answer.probability"/>
-      <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
+    <div v-if="ready">
+      <div v-if="answers.length > 0">
+        <Filters v-if="useFilters"/>
+        <Answer :answer="answer" v-for="answer in answers" :key="answer.probability"/>
+        <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
+      </div>
+      <div v-else>
+        Pas de réponse <br><br>
+        <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link><br><br>
+        <span v-if="useFilters">ou modifier les filtres</span>
+        <Filters v-if="useFilters"/>
+      </div>
     </div>
     <div v-else>
     <Spinner/>
@@ -21,7 +29,8 @@ import Answer from './Answer.vue'
 export default Vue.extend({
   name: 'Answers',
   data: () => ({
-    ready: true,
+    ready: false,
+    useFilters: Boolean(process.env.VUE_APP_USE_FILTERS)
   }),
   computed: {
     ...mapState([
@@ -36,22 +45,32 @@ export default Vue.extend({
   methods: {
     // here we have to define unsubscribe (otherwise, Typescirpt says this has no funciton such as unsubscribe)
     unsubscribe(): void{
-      console.log('here');
+      // console.log('here');
+    },
+    unsubscribe2(): void{
+      // console.log('here');
     },
   },
   beforeDestroy(): void {
     this.unsubscribe();
+    this.unsubscribe2();
   },
   created: function() {
     this.$store.dispatch('callInference');
 
     this.unsubscribe = this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'setAnswers') {
-        if (state.answer) {
+        if (state.answers) {
           this.ready = true
         }
       }
     });
+
+    this.unsubscribe2 = this.$store.subscribeAction((action, state) => {
+      if (action.type === 'callInference') {
+        this.ready = false
+      }
+    })
   },
 
 });
