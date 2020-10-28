@@ -19,6 +19,7 @@ export default Vue.extend({
     filterOptions: Array,
     placeholder: String,
     filterId: String,
+    filtersToRemove: Array,
   },
   computed: {
     ...mapState([
@@ -44,6 +45,7 @@ export default Vue.extend({
   methods: {
     setSelectedAction(arg: any) {
       const storeFilters = this.filters
+      this.filtersToRemove.forEach(function(f: any){ delete storeFilters[f] } );
       storeFilters[arg.id] = arg.value
       this.$store.commit('setFilters',storeFilters)
     }

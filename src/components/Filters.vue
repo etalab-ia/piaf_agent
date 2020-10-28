@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-11/12 max-w-screen-md mx-auto flex flex-row flex-no-wrap justify-start overflow-x-auto">
-      <Fil v-for="(node, i) in filtersNodesReducesToCurrentDepth" :key="i" :placeholder="node.name" :filterOptions="getList(node)" :filterId="node.id" />
+      <Fil v-for="(node, i) in filtersNodesReducesToCurrentDepth" :key="i + node.id" :placeholder="node.name" :filterOptions="getList(node)" :filterId="node.id" :filtersToRemove="filtersToRemoveIfChanging(node.depth)"/>
     </div>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-4" v-on:click="onClick">
       Affiner la recherche
@@ -68,6 +68,11 @@ export default Vue.extend({
          filtersSubTree = filtersSubTree[this.filters[LoopNode['id']]]
        }
      }
+   },
+   // this function provides with the name of the properties that will be deleted if the filter is changed : meaning the properties bellow this one
+   filtersToRemoveIfChanging(depth: number){
+     const nodes: any = JSON.parse(JSON.stringify(this.filtersNodeNames))
+     return nodes.filter((node: any) => node.depth >= depth).map((node: any) => node.id)
    },
    unsubscribe(): void{
      // console.log('here');

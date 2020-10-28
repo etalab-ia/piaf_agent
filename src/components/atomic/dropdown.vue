@@ -8,7 +8,7 @@
 		<div class="dropdown-label-container">
 			<div class="dropdown-label">
 				<span class="text font-bold">
-					{{ config && config.placeholder ? config.placeholder : placeholder }} {{ selectedFilter ? ': ' + selectedFilter : '' }}
+					{{ config && config.placeholder ? config.placeholder : placeholder }} {{ config.selectedFilter ? ': ' + config.selectedFilter : '' }}
 				</span>
 				<i class="angle-down" :class="{ toggled: isExpanded }"></i>
 			</div>
@@ -46,7 +46,7 @@
 				border: "1px solid #0084d4",
 				borderRadius: 0.5,
 				width: 180,
-				selectedFilter: undefined,
+				// selectedFilter: undefined,
 			};
 		},
 		props: ["config"],
@@ -101,7 +101,7 @@
 		methods: {
 			setCurrentSelectedOption(option) {
 				this.$emit("setSelectedOption", option);
-				this.selectedFilter = option.value
+				// this.selectedFilter = option.value
 			},
 			setConfigData() {
 				if (this.config) {
@@ -143,7 +143,7 @@
 			document.addEventListener('click', this.documentClicked);
 			this.setConfigData();
 			this.setOptionsHeight();
-			this.selectedFilter = this.config.selectedFilter;
+			// this.selectedFilter = this.config.selectedFilter;
 		},
 		beforeUdate() {
 			// this.setOptionsHeight();
