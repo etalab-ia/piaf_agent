@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.timeout = 5000;
 
 export async function callInferenceAsync(question?: string, filters?: any) {
   interface ServerResponse {

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {callInferenceAsync} from './api_utils'
+import router from '../router/index'
+
 
 Vue.use(Vuex)
 
@@ -23,7 +25,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async callInference({ commit, state }) {
+    async callInference({ commit, state, dispatch }) {
       const a = await callInferenceAsync(state.question, state.filters)
       if(a){
         commit('setAnswers', a[0].answers)
@@ -31,6 +33,8 @@ export default new Vuex.Store({
       }else{
         // eslint-disable-next-line
         console.log('problem loading the new paragraph');
+        dispatch('reboot');
+        router.push('Error')
         return false
       }
     },
