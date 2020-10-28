@@ -32,7 +32,6 @@ export default Vue.extend({
         return
       }
       const selector = new SelectText(paragraph)
-      console.log(this.answer);
       selector.addSelection(paragraph.textContent.indexOf(this.answer.answer),this.answer.answer.length)
 
       // here we have to clone this to remove the addeventlistner that selects text
