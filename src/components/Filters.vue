@@ -58,7 +58,11 @@ export default Vue.extend({
        const LoopNode: any = nodes.filter((el: NodeElement) => el.depth === i).shift()
        // we are at the right node, we can retreive the list of choices for this filter
        if (node.depth === LoopNode.depth) {
-         return Object.keys(filtersSubTree);
+         if (Array.isArray(filtersSubTree)) {
+           return filtersSubTree
+         }else{
+           return Object.keys(filtersSubTree);
+         }
        }
        else{
          filtersSubTree = filtersSubTree[this.filters[LoopNode['id']]]
