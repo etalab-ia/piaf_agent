@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+filters.json
+filtersNodeNames.json
 
 # local env files
 .env.local

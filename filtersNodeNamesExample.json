@@ -1,0 +1,24 @@
+{
+  "version": 1.0,
+  "nodes": [{
+      "name": "Theme",
+      "id": "theme",
+      "depth": 0
+    },
+    {
+      "name": "Sub-theme",
+      "id": "sub_theme",
+      "depth": 1
+    },
+    {
+      "name": "File",
+      "id": "file",
+      "depth": 2
+    },
+    {
+      "name": "Sub-file",
+      "id": "sub-file",
+      "depth": 3
+    }
+  ]
+}

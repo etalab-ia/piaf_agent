@@ -1,0 +1,13 @@
+{
+    "Money": {
+        "Savings": {
+            "Investments": {
+                "categories": [
+                    "Market",
+                    "State",
+                    "Commodities"
+                ]
+            }
+        }
+    }
+}
