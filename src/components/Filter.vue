@@ -48,7 +48,21 @@ export default Vue.extend({
       this.filtersToRemove.forEach(function(f: any){ delete storeFilters[f] } );
       storeFilters[arg.id] = arg.value
       this.$store.commit('setFilters',storeFilters)
-    }
+    },
+    unsubscribe(): void{
+      // console.log('here');
+    },
+  },
+  created: function() {
+     this.config.selectedFilter = this.filters[this.filterId]
+     this.unsubscribe = this.$store.subscribe((mutation, state) => {
+       if (mutation.type === 'setFilters') {
+           this.config.selectedFilter = this.filters[this.filterId]
+       }
+     });
+  },
+  beforeDestroy(): void {
+   this.unsubscribe();
   },
 });
 </script>
