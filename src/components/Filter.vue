@@ -25,7 +25,7 @@ export default Vue.extend({
     ...mapState([
        'filters'
     ]),
-    config: function() {
+    config: function(): any {
       const options: Array<any> = []
       this.filterOptions.forEach(el => {
         options.push({id: this.filterId, value : el})
@@ -33,10 +33,11 @@ export default Vue.extend({
       return {
           placeholder: this.placeholder,
           options: options,
-          backgroundColor: "#2b6cb0",
-          backgroundExpandedColor: "#2b6cb0",
-          hoverBackgroundColor: "#4299e1",
-          textColor: "white",
+          backgroundColor: "#ffffff",
+          backgroundExpandedColor: "#ffffff",
+          hoverBackgroundColor: "#b3dcff",
+          textColor: "black",
+          border: "1px solid #4d5559",
           disabled: false,
           selectedFilter: this.filters[this.filterId],
       }

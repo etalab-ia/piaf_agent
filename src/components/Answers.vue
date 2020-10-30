@@ -3,11 +3,14 @@
     <div v-if="ready">
       <div v-if="answers.length > 0">
         <Filters v-if="useFilters"/>
+        <div class="my-3">
+          <span class="italic font-bold">{{this.question}}</span>
+        </div>
         <Answer :answer="answer" v-for="answer in answers" :key="answer.probability"/>
         <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
       </div>
       <div v-else>
-        Pas de réponse <br><br>
+        Pas de réponse pour la question <span class="italic font-bold">{{this.question}}</span><br><br>
         <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link><br><br>
         <span v-if="useFilters">ou modifier les filtres</span>
         <Filters v-if="useFilters"/>
@@ -34,7 +37,8 @@ export default Vue.extend({
   }),
   computed: {
     ...mapState([
-     'answers'
+     'answers',
+     'question'
    ]),
  },
   components: {

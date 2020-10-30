@@ -3,7 +3,7 @@
     <div class="w-11/12 max-w-screen-md mx-auto flex flex-row flex-no-wrap justify-start overflow-x-auto">
       <Fil v-for="(node, i) in filtersAsArray" :key="i + node.type" :placeholder="node.type.replace('_',' ')" :filterOptions="node.options" :filterId="node.type" :filtersToRemove="filtersToRemoveIfChanging(node.depth)"/>
     </div>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-4" v-on:click="onClick">
+    <button class="bg-blue-700 hover:bg-blue-800 text-white py-1 px-4 border border-blue-700 rounded mt-4" v-on:click="onClick">
       Affiner la recherche
     </button>
   </div>

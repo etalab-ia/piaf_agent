@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="dropdown"
+		class="dropdown text-left px-2"
 		@click.stop="shouldToggleDropdown"
 		:class="computedClasses"
 		:style="computedStyles"
@@ -21,7 +21,7 @@
 				class="option"
 				@click="setCurrentSelectedOption(option);"
 			>
-				{{ option.value }}
+				<li>{{ option.value }}</li>
 			</div>
 		</div>
 	</div>
@@ -166,7 +166,6 @@
 	border-radius: var(--border-radius);
 	cursor: pointer;
 	color: var(--text-color);
-	background: green;
 	user-select: none;
 	transition: all 0.7s linear;
 }
