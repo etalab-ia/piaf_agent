@@ -6,7 +6,7 @@
         <div class="my-3">
           <span class="italic font-bold">{{this.question}}</span>
         </div>
-        <Answer :answer="answer" v-for="answer in answers" :key="answer.probability"/>
+        <Answer :answer="answer" v-for="(answer, i) in answers" :key="i + '-' + answer.probability"/>
         <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
       </div>
       <div v-else>
