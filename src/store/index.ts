@@ -11,7 +11,7 @@ export default new Vuex.Store({
     question : undefined,
     answer : undefined,
     answers : [],
-    filters : {},
+    filters : [],
   },
   mutations: {
     setQuestion(state,newQuestion) {
@@ -40,7 +40,7 @@ export default new Vuex.Store({
     },
     async reboot({ commit }) {
       commit('setAnswers', [])
-      commit('setFilters', {})
+      commit('setFilters', [])
     },
   },
   modules: {

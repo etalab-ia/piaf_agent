@@ -19,7 +19,7 @@ export default Vue.extend({
     filterOptions: Array,
     placeholder: String,
     filterId: String,
-    filtersToRemove: Array,
+    depth: Number,
   },
   computed: {
     ...mapState([
@@ -28,7 +28,7 @@ export default Vue.extend({
     config: function(): any {
       const options: Array<any> = []
       this.filterOptions.forEach(el => {
-        options.push({id: this.filterId, value : el})
+        options.push({id: this.filterId, value : el, depth: this.depth})
       });
       return {
           placeholder: this.placeholder,
@@ -39,15 +39,16 @@ export default Vue.extend({
           textColor: "black",
           border: "1px solid #4d5559",
           disabled: false,
-          selectedFilter: this.filters[this.filterId],
+          selectedFilter: this.filters.find((fil: any) => fil["id"] === this.filterId)?.value,
       }
     },
   },
   methods: {
     setSelectedAction(arg: any) {
-      const storeFilters = this.filters
-      this.filtersToRemove.forEach(function(f: any){ delete storeFilters[f] } );
-      storeFilters[arg.id] = arg.value
+      let storeFilters = this.filters
+      // here we keep filters with lower depth
+      storeFilters = storeFilters.filter((fil: any) => fil.depth < this.depth)
+      storeFilters.push({"id": arg.id, "value": arg.value, "depth": arg.depth})
       this.$store.commit('setFilters',storeFilters)
     },
     unsubscribe(): void{
@@ -55,10 +56,10 @@ export default Vue.extend({
     },
   },
   created: function() {
-     this.config.selectedFilter = this.filters[this.filterId]
+     this.config.selectedFilter = this.filters.find((fil: any) => fil["id"] === this.filterId)?.value
      this.unsubscribe = this.$store.subscribe((mutation, state) => {
        if (mutation.type === 'setFilters') {
-           this.config.selectedFilter = this.filters[this.filterId]
+           this.config.selectedFilter = this.filters.find((fil: any) => fil["id"] === this.filterId)?.value
        }
      });
   },
