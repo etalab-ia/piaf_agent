@@ -1,5 +1,9 @@
 # piafagent
 
+Frontend application to be plugged to a Question-answering backend ([like this one](https://github.com/deepset-ai/haystack)). It is a search bar, displaying  answers after you press "Search".  
+
+Note: the text is currently in french, but can easily be adapted to any other language.  
+
 ## Project setup
 ```
 npm install
@@ -11,6 +15,10 @@ npm install
 ```
 npm run serve
 ```
+
+![search](/public/search_bar.png)
+
+![answers](/public/answers.png)
 
 ### Compiles and minifies for production
 ```
