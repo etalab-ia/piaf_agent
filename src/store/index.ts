@@ -29,7 +29,7 @@ export default new Vuex.Store({
     async callInference({ commit, state }) {
       const a = await callInferenceAsync(state.question)
       if(a){
-        commit('setAnswers', a[0].answers)
+        commit('setAnswers', a)
         commit('setAnswer', a)
         return true
       }else{
