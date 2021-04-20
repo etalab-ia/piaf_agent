@@ -4,6 +4,9 @@
       <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()">
         Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %
       </p>
+      <p v-if="displayTitles && answer.meta.name" class="mt-2 truncate underline">
+        {{answer.meta.name}}
+      </p>
       <div ref="answ">
         <span>{{answer.context}}</span>...
       </div>
@@ -22,6 +25,9 @@ import SelectText from '@vinyll/selecttext'
 
 export default Vue.extend({
   name: 'Answer',
+  data: () => ({
+    displayTitles: Boolean(process.env.VUE_APP_DISPLAY_TITLES)
+  }),
   props: [
     'answer',
   ],

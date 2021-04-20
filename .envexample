@@ -2,4 +2,5 @@ VUE_APP_API_URL=https://myapi.com/
 VUE_APP_PUBLIC_PATH=/base_app_uri/
 VUE_APP_USE_FILTERS=false
 VUE_APP_DISPLAY_NAME=YOU
+VUE_APP_DISPLAY_TITLES=true
 VUE_APP_EXAMPLE_QUESTION=Quel est le coût d'un passeport ?
