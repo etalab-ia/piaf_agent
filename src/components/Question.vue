@@ -8,7 +8,7 @@
       Chercher
     </button>
     <div class="text-center text-gray-600 mt-10 italic">
-      <p>ex: "Quel est le coût d'un passeport ?"</p>
+      <p>ex: "{{exampleQuestion}}"</p>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default Vue.extend({
   name: 'Question',
   data: () => ({
     newQuestion: '',
+    exampleQuestion: (process.env.VUE_APP_EXAMPLE_QUESTION) ? process.env.VUE_APP_EXAMPLE_QUESTION : "Quel est le coût d'un passeport ?"
   }),
   methods: {
    onClick(){

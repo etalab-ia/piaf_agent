@@ -45,5 +45,10 @@ Note: the 8081 port will of course depend on your nginx / apache configuration.
 
 Edit the `src/.env` file (you can find an example here `src/.envexample`)
 
-VUE_APP_API_URL: endpoint you want this app to talk to  
-VUE_APP_PUBLIC_PATH: base_app_uri, used in the vue app config for setting publicPath, and also for the base uri of VueRouter.
+`VUE_APP_API_URL`: endpoint you want this app to talk to  
+`VUE_APP_PUBLIC_PATH`: base_app_uri, used in the vue app config for setting publicPath, and also for the base uri of VueRouter.  
+`VUE_APP_USE_FILTERS`: boolean for if you want to use filters or not. If you do want to use filters, you need to add a file describing your filters. it must follow this format : [filter file example](/filters.json)
+`VUE_APP_DISPLAY_NAME`: Name to be displayed in the title   
+`VUE_APP_EXAMPLE_QUESTION`: The question serving as example in the Homepage  
+
+![search](/public/filters.png)

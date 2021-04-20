@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "data": [{
+    "id": "N19803",
+    "type": "theme",
+    "name": "Argent",
+    "data": [{
+      "id": "N20376",
+      "type": "dossier",
+      "name": "Livrets, plans et comptes d'épargne",
+      "data": [{
+        "id": "F2365",
+        "type": "fiche",
+        "name": "Livret A",
+        "data": null
+      }]
+    }]
+  }]
+}
