@@ -26,7 +26,7 @@ import SelectText from '@vinyll/selecttext'
 export default Vue.extend({
   name: 'Answer',
   data: () => ({
-    displayTitles: Boolean(process.env.VUE_APP_DISPLAY_TITLES)
+    displayTitles: (process.env.VUE_APP_DISPLAY_TITLES == 'true')
   }),
   props: [
     'answer',
