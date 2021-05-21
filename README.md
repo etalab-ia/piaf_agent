@@ -50,5 +50,6 @@ Edit the `src/.env` file (you can find an example here `src/.envexample`)
 `VUE_APP_USE_FILTERS`: boolean for if you want to use filters or not. If you do want to use filters, you need to add a file describing your filters. it must follow this format : [filter file example](/filters.json)
 `VUE_APP_DISPLAY_NAME`: Name to be displayed in the title   
 `VUE_APP_EXAMPLE_QUESTION`: The question serving as example in the Homepage  
+`VUE_APP_DISPLAY_PROBABILITIES`: boolean for if you want to display the probability associated with the document
 
 ![search](/public/filters.png)
