@@ -28,7 +28,7 @@ export default new Vuex.Store({
     async callInference({ commit, state, dispatch }) {
       const a = await callInferenceAsync(state.question, state.filters)
       if(a){
-        commit('setAnswers', a[0].answers)
+        commit('setAnswers', a.answers)
         return true
       }else{
         // eslint-disable-next-line
