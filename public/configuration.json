@@ -1,0 +1,7 @@
+{
+  "API_URL": "https://myapi.com/",
+  "USE_FILTERS": false,
+  "DISPLAY_PROBABILITIES": true,
+  "DISPLAY_NAME": "YOU",
+  "EXAMPLE_QUESTION": "Quel est le coût d'un passeport ?"
+}

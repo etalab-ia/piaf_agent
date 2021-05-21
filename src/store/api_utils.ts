@@ -29,7 +29,7 @@ export async function callInferenceAsync(question?: string, filters?: any) {
   if(lastFilter){ f[lastFilter["id"]] = lastFilter["value"]}
 
   try {
-    const res = await axios.post<Query, ServerResponse>(process.env.VUE_APP_API_URL, {
+    const res = await axios.post<Query, ServerResponse>(global.piafAgentConfig.API_URL, {
         "query": question,
         "filters": f,
         "top_k_reader": 3,

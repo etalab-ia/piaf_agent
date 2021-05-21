@@ -12,7 +12,7 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'Head',
   data: () => ({
-    clientName: (process.env.VUE_APP_DISPLAY_NAME) ? process.env.VUE_APP_DISPLAY_NAME : 'YOU'
+    clientName: global.piafAgentConfig.DISPLAY_NAME
   }),
 });
 </script>
