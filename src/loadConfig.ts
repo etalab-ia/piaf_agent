@@ -17,7 +17,7 @@ export const loadConfig = async (): Promise<Config> => {
 
   const configFromJson: LoadingConfig = await response.json();
 
-  if (!configFromJson.API_URL) {
+  if (!configFromJson?.API_URL) {
     throw new Error('The API_URL parameter is mandatory');
   }
   return {
@@ -25,6 +25,6 @@ export const loadConfig = async (): Promise<Config> => {
     API_URL: configFromJson.API_URL,
     DISPLAY_NAME: configFromJson.DISPLAY_NAME ?? 'YOU',
     EXAMPLE_QUESTION: configFromJson.EXAMPLE_QUESTION ?? 'Quel est le coût d\'un passeport ?',
-    USE_FILTERS: configFromJson.USE_FILTERS ?? false
+    FILTERS: configFromJson.FILTERS ?? {version: "1", data: []}
   };
 };
