@@ -1,7 +1,7 @@
 <template>
   <div v-if="Number(answer.probability) > 0.20" class="mb-10">
     <div class="alignLeft paragraph w-11/12 max-w-screen-md mx-auto mt-8 p-2 text-left border-blue-400 border-2 rounded border-solid relative">
-      <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()">
+      <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()" v-if="displayProbability">
         Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %
       </p>
       <div ref="answ">
@@ -25,6 +25,9 @@ export default Vue.extend({
   props: [
     'answer',
   ],
+  data: () => ({
+    displayProbability: (process.env.VUE_APP_DISPLAY_PROBABILITIES ?? 'true') === 'true'
+  }),
   methods: {
     printAnswer(): void{
       const paragraph: any = this.$refs.answ

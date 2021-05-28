@@ -3,13 +3,10 @@ axios.defaults.timeout = 5000;
 
 export async function callInferenceAsync(question?: string, filters?: any) {
   interface ServerResponse {
-    data: ServerData;
-  }
-  interface ServerData {
-    results: Array<InferenceResult>;
+    data: InferenceResult;
   }
   interface InferenceResult {
-    question: string;
+    query: string;
     answers: Array<Answer>;
   }
   interface Answer {
@@ -18,7 +15,13 @@ export async function callInferenceAsync(question?: string, filters?: any) {
     probability: number;
   }
 
-  let res: ServerResponse
+  interface Query {
+    query: string;
+    filters: unknown[];
+    top_k_reader: number;
+    top_k_retriever: number;
+  }
+
 
   const maxDepth = Math.max(...filters.map((o: any) => o.depth))
   const lastFilter: any = filters.find((f: any) => f.depth === maxDepth )
@@ -26,16 +29,14 @@ export async function callInferenceAsync(question?: string, filters?: any) {
   if(lastFilter){ f[lastFilter["id"]] = lastFilter["value"]}
 
   try {
-    res = await axios.post(process.env.VUE_APP_API_URL, {
-        "questions": [
-          question
-        ],
+    const res = await axios.post<Query, ServerResponse>(process.env.VUE_APP_API_URL, {
+        "query": question,
         "filters": f,
         "top_k_reader": 3,
         "top_k_retriever": 5
       }
     );
-    return res.data.results
+    return res.data
   } catch (error) {
     console.log(error, 'err')
     return false
