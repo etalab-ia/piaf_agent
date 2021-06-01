@@ -1,12 +1,12 @@
 main:
-  - name: "Services"
-    url: "/services/"
+  - name: "Pour qui ?"
+    url: "/pour_qui/"
     weight: 2
-  - name: "Team"
-    url: "/team/"
+  - name: "L'équipe"
+    url: "https://www.etalab.gouv.fr/equipe"
     weight: 3
-  - name: "About"
-    url: "/about/"
+  - name: "Installation"
+    url: "/installation/"
     weight: 4
   - name: "Contact"
     url: "/contact/"
