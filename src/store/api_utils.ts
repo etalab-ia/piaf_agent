@@ -6,7 +6,7 @@ export async function callInferenceAsync(question?: string, filters?: any) {
     data: ServerData;
   }
   interface ServerData {
-    answers: Array<InferenceResult>;
+    results: Array<InferenceResult>;
   }
   interface InferenceResult {
     question: string;
@@ -27,10 +27,15 @@ export async function callInferenceAsync(question?: string, filters?: any) {
 
   try {
     res = await axios.post(process.env.VUE_APP_API_URL, {
-        "query": question
+        "questions": [
+          question
+        ],
+        "filters": f,
+        "top_k_reader": 3,
+        "top_k_retriever": 5
       }
     );
-    return res.data.answers
+    return res.data.results
   } catch (error) {
     console.log(error, 'err')
     return false
