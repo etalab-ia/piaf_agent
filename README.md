@@ -1,56 +1,88 @@
-# piafagent
+# Jekyll Serif Theme
 
-Frontend application to be plugged to a Question-answering backend ([like this one](https://github.com/deepset-ai/haystack)). It is a search bar, displaying  answers after you press "Search".  
+Serif is a modern business theme for Jekyll. It contains multiple content types for a typical business website. The theme is fully responsive, blazing fast and artfully illustrated.
 
-Note: the text is currently in french, but can easily be adapted to any other language.  
+[Live Demo](https://jekyll-serif.netlify.app/) | 
+[Zerostatic Themes](https://www.zerostatic.io)
 
-## Project setup
+![Jekyll Serif Theme screenshot](https://www.zerostatic.io/theme/jekyll-serif/jekyll-serif-screenshot.png)
+
+### Theme features
+
+- Jekyll 4.1
+- Services (Collection)
+- Team (Collection)
+- Features (Data)
+- SCSS
+- Responsive design
+- Bootstrap 4.3 grid and media queries only
+- Responsive menu
+- 100/100 Google Lighthouse speed score
+- 100/100 Google Lighthouse seo score
+- 100/100 Google Lighthouse accessibility score
+- 100/100 Google Lighthouse best practices score
+- Under 50KB without images or 80KB with images and illustrations ⚡
+- Under 20KB without Google fonts ⚡⚡⚡
+- Robust example content included
+- Royalty free illustrations included
+- Netlify & Github Pages ready
+
+## Installation
+
+### Installing Ruby & Jekyll
+ 
+If this is your first time using Jekyll, please follow the [Jekyll docs](https://jekyllrb.com/docs/installation/) and make sure your local environment (including Ruby) is setup correctly.
+
+### Installing Theme
+
+Download or clone the theme.
+
+To run the theme locally, navigate to the theme directory and run:
+
 ```
-npm install
+bundle install
+``` 
+
+To start the Jekyll local development server.
+
+```
+bundle exec jekyll serve
+``` 
+
+To build the theme.
+ 
+```
+bundle exec jekyll build
 ```
 
-## Project run
+## Deployment
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Stackbit
 
-![search](/public/search_bar.png)
+Use Stackbit to deploy this theme. This theme contains a valid and tested `stackbit.yaml`
 
-![answers](/public/answers.png)
+[![Create with Stackbit](https://assets.stackbit.com/badge/create-with-stackbit.svg)](https://app.stackbit.com/create?theme=https://github.com/zerostaticthemes/jekyll-serif-theme)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Netlify
 
-### Lints and fixes files
-```
-npm run lint
-```
+Use Netlify to deploy this theme. This theme contains a valid and tested `netlify.toml` - Feel free to use the 1-click deploy below.
 
-### Run with docker
-A Dockfile for running your app in production is already prepared.
-You only have to build the image and run it, typing :
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/zerostaticthemes/jekyll-serif-theme)
 
-```bash
-docker build -t piafagent_image .
-docker run -d -p 8081:80 --name piafagent piafagent_image
-```
+### Github Pages
+This theme has been tested to work with Github Pages (and Github Project Pages). When using Github Pages you will need to update the `baseurl` in the `_config.yml` otherwise all the css, images and paths will be broken.
 
-Note: the 8081 port will of course depend on your nginx / apache configuration.
+For example the site https://zerostaticthemes.github.io/jekyll-serif-theme would have `baseurl: "/jekyll-serif-theme/"`
 
-## Project Configuration
+## Other
 
-Edit the `src/.env` file (you can find an example here `src/.envexample`)
+### Credits
 
-`VUE_APP_API_URL`: endpoint you want this app to talk to  
-`VUE_APP_PUBLIC_PATH`: base_app_uri, used in the vue app config for setting publicPath, and also for the base uri of VueRouter.  
-`VUE_APP_USE_FILTERS`: boolean for if you want to use filters or not. If you do want to use filters, you need to add a file describing your filters. it must follow this format : [filter file example](/filters.json)
-`VUE_APP_DISPLAY_NAME`: Name to be displayed in the title   
-`VUE_APP_DISPLAY_TITLES`: Do you want the title of your answers to be displayed (only if you added a title to your paragraphs)   
-`VUE_APP_EXAMPLE_QUESTION`: The question serving as example in the Homepage  
-`VUE_APP_DISPLAY_PROBABILITIES`: boolean for if you want to display the probability associated with the document
+- Beautiful royalty free Illustrations by Icons8 - https://icons8.com/illustrations/style--pixeltrue
 
-![search](/public/filters.png)
+### License
+
+This theme is open source under the MIT license. Please be respectful 🙏🏽
+
+* If you fork or copy this theme please leave me as an original author in the LICENSE file on line 3 where I am listed as the author.
+* Please don't create ports of this theme without at least asking me. Yes this theme is open-source but I've had several people "port" this theme (with only minor changes) and then advertise the theme as their own. Then they don't update it and it starts to get old and break etc. Now lots of people are finding these old crappy versions of the theme.
