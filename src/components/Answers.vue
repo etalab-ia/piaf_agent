@@ -33,7 +33,7 @@ export default Vue.extend({
   name: 'Answers',
   data: () => ({
     ready: false,
-    useFilters: (process.env.VUE_APP_USE_FILTERS == 'true')
+    useFilters: Boolean(process.env.VUE_APP_USE_FILTERS)
   }),
   computed: {
     ...mapState([
