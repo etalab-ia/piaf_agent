@@ -26,14 +26,12 @@ import SelectText from '@vinyll/selecttext'
 export default Vue.extend({
   name: 'Answer',
   data: () => ({
-    displayTitles: (process.env.VUE_APP_DISPLAY_TITLES == 'true')
+    displayTitles: (process.env.VUE_APP_DISPLAY_TITLES == 'true'),
+    displayProbability: (process.env.VUE_APP_DISPLAY_PROBABILITIES ?? 'true') === 'true'
   }),
   props: [
     'answer',
   ],
-  data: () => ({
-    displayProbability: (process.env.VUE_APP_DISPLAY_PROBABILITIES ?? 'true') === 'true'
-  }),
   methods: {
     printAnswer(): void{
       const paragraph: any = this.$refs.answ
