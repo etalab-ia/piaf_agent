@@ -1,20 +1,14 @@
 import {Config, LoadingConfig} from './config';
 import {clientFromUrl} from "@/client";
 
-const OVERRIDE_CONFIGURATION_FILE = `/override.json`;
-
 export const loadConfig = async (): Promise<Config> => {
-  let response: Response;
+  let response: Response | null = null;
+
   const client = clientFromUrl();
-  const client_configuration_url = client !== null ? `/clients/${client}.json` : '/configuration.json'
-  // Allow to have a local override.json, will be stripped by webpack for production build
-  if (process.env.NODE_ENV === 'development') {
-    response = await fetch(OVERRIDE_CONFIGURATION_FILE);
-    if (!response.ok) {
-      response = await fetch(client_configuration_url);
-    }
+  if (client === null) {
+    throw new Error('No client');
   } else {
-    response = await fetch(client_configuration_url);
+    response = await fetch(`/clients/${client}.json`);
   }
 
   const configFromJson: LoadingConfig = await response.json();
@@ -22,6 +16,7 @@ export const loadConfig = async (): Promise<Config> => {
   if (!configFromJson?.API_URL) {
     throw new Error('The API_URL parameter is mandatory');
   }
+
   return {
     DISPLAY_PROBABILITIES: configFromJson.DISPLAY_PROBABILITIES ?? true,
     API_URL: configFromJson.API_URL,
