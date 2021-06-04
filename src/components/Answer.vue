@@ -26,8 +26,8 @@ import SelectText from '@vinyll/selecttext'
 export default Vue.extend({
   name: 'Answer',
   data: () => ({
-    displayTitles: (process.env.VUE_APP_DISPLAY_TITLES == 'true'),
-    displayProbability: (process.env.VUE_APP_DISPLAY_PROBABILITIES ?? 'true') === 'true'
+    displayTitles: global.piafAgentConfig.DISPLAY_TITLES,
+    displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES
   }),
   props: [
     'answer',

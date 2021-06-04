@@ -1,0 +1,11 @@
+{
+  "API_URL": "https://piaf.datascience.etalab.studio/crpa/query",
+  "FILTERS": {
+    "version": "1.0",
+    "data": []
+  },
+  "DISPLAY_PROBABILITIES": false,
+  "DISPLAY_TITLES": true,
+  "DISPLAY_NAME": "CRPA",
+  "EXAMPLE_QUESTION": "Qu'est ce qu'un document administratif ?"
+}

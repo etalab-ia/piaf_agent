@@ -1,0 +1,2 @@
+# For netlify, redirect every url that does not match a file to /index.html (useful for /client/...)
+/*    /index.html   200

@@ -1,0 +1,11 @@
+{
+  "API_URL": "https://piaf.datascience.etalab.studio/cnil/query",
+  "FILTERS": {
+    "version": "1.0",
+    "data": []
+  },
+  "DISPLAY_PROBABILITIES": false,
+  "DISPLAY_TITLES": true,
+  "DISPLAY_NAME": "CNIL",
+  "EXAMPLE_QUESTION": "L'utilisation de mes données personnelles doit-elle être mentionnée dans les CGU d'un site internet ?"
+}

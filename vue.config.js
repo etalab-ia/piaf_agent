@@ -5,6 +5,5 @@ module.exports = {
     },
     disableHostCheck: true,
   },
-  // force a relative path link --> https://cli.vuejs.org/config/#publicpath
-  publicPath: ''
+  publicPath: '/'
 }

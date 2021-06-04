@@ -1,0 +1,11 @@
+{
+  "API_URL": "https://piaf.datascience.etalab.studio/dila/query",
+  "FILTERS": {
+    "version": "1.0",
+    "data": []
+  },
+  "DISPLAY_PROBABILITIES": false,
+  "DISPLAY_TITLES": true,
+  "DISPLAY_NAME": "Service-public",
+  "EXAMPLE_QUESTION": "Combien coûte un passeport ?"
+}

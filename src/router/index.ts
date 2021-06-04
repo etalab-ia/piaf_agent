@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Answers from '../views/Answers.vue'
+import {clientFromUrl} from "@/client";
 
 Vue.use(VueRouter)
 
@@ -30,10 +31,11 @@ Vue.use(VueRouter)
     component: Home
   }
 ]
-
+const client = clientFromUrl();
 const router = new VueRouter({
   routes,
   mode: 'history',
+  base: client === null ? '/' : client
 })
 
 export default router
