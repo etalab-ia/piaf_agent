@@ -20,7 +20,7 @@ export default Vue.extend({
   name: 'Question',
   data: () => ({
     newQuestion: '',
-    exampleQuestion: (process.env.VUE_APP_EXAMPLE_QUESTION) ? process.env.VUE_APP_EXAMPLE_QUESTION : "Quel est le coût d'un passeport ?"
+    exampleQuestion: global.piafAgentConfig.EXAMPLE_QUESTION
   }),
   methods: {
    onClick(){

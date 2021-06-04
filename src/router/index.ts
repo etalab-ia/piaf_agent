@@ -34,7 +34,6 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes,
   mode: 'history',
-  base: process.env.VUE_APP_PUBLIC_PATH
 })
 
 export default router

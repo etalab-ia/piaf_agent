@@ -33,7 +33,7 @@ export default Vue.extend({
   name: 'Answers',
   data: () => ({
     ready: false,
-    useFilters: (process.env.VUE_APP_USE_FILTERS == 'true')
+    useFilters: global.piafAgentConfig.FILTERS.data.length > 0
   }),
   computed: {
     ...mapState([

@@ -14,7 +14,7 @@
 import Vue from 'vue';
 import { mapState } from 'vuex'
 import Fil from './Filter.vue' //Filter is a reserved word and won't work
-import filtersJson from '../../filters.json'
+import { FilterData } from '@/config'
 
 interface FilterArrElement {
   depth: number;
@@ -36,7 +36,7 @@ export default Vue.extend({
     Fil
   },
   data: () => ({
-    filtersJson: filtersJson.data,
+    filtersJson: global.piafAgentConfig.FILTERS.data,
     filtersCurrentDepth: 0,
   }),
   computed: {
@@ -45,7 +45,7 @@ export default Vue.extend({
     ]),
     filtersAsArray: function(): Array<FilterArrElement>{
       const arr: Array<FilterArrElement> = []
-      let tree: any = this.filtersJson
+      let tree: FilterData[] | undefined = this.filtersJson
       let type: string
       let idInFilter: any
       let idInFilterId: string
@@ -57,23 +57,23 @@ export default Vue.extend({
           return arr
         }
         // at specific depth, all types are the same.
-        type = tree[0]['type']
+        type = tree[0].type
         // let's grab the value to filter by for this type of filter
         const filStable: any = JSON.parse(JSON.stringify(this.filters))
 
         idInFilter = filStable.find((fil: any) => fil["id"] === type)
         idInFilterId = (idInFilter) ? idInFilter["id"] : undefined
 
-        options = tree?.map((el: any) => el.name)
+        options = tree?.map((el) => el.name)
         // we store in the array every info required to display a filter button
 
         arr.push({ depth: i, id: idInFilterId, type: type, options: options})
         // let go one step down into our tree
         if (idInFilter) {
-          console.log(tree.find((obj: TreeNode) => obj.name === idInFilter));
+          console.log(tree?.find((obj: TreeNode) => obj.name === idInFilter));
           console.log('i:',i,'tree',tree,'idInFilter',idInFilter);
 
-          tree = tree.find((obj: TreeNode) => obj.name === idInFilter.value).data
+          tree = tree?.find((obj: TreeNode) => obj.name === idInFilter.value)?.data
         }else if (i != this.filtersCurrentDepth){
           console.log('probably a bug here');
           return arr
