@@ -19,6 +19,8 @@ export const loadConfig = async (): Promise<Config> => {
 
   return {
     DISPLAY_PROBABILITIES: configFromJson.DISPLAY_PROBABILITIES ?? true,
+    TAGNAME: configFromJson.TAGNAME ?? true,
+    DISPLAY_TAG: configFromJson.DISPLAY_TAG ?? true,
     API_URL: configFromJson.API_URL,
     DISPLAY_NAME: configFromJson.DISPLAY_NAME ?? 'YOU',
     DISPLAY_TITLES: configFromJson.DISPLAY_TITLES ?? true,
