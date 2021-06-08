@@ -8,7 +8,7 @@
         {{answer.meta.name}}
       </p>
       <div ref="answ">
-        <span>{{answer.context}}</span>...
+        <span>{{answer.context}}</span><span v-if="answer.context.slice(-1) !== '.'">...</span>
       </div>
       <a v-if="answer.meta && answer.meta.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="answer.meta.link" target="_blank"> <i></i>lien vers la fiche</a>
     </div>
