@@ -2,7 +2,6 @@ export interface LoadingConfig {
   API_URL?: string;
   FILTERS?: Filters;
   DISPLAY_PROBABILITIES?: boolean;
-  DISPLAY_TAG?: boolean;
   TAGNAME?: string;
   DISPLAY_TITLES?: boolean;
   DISPLAY_NAME?: string;

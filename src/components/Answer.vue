@@ -4,7 +4,7 @@
       <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()" v-if="displayProbability">
         Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %
       </p>
-      <p class="italic ml-auto rounded text-white px-2 bg-yellow-800" style="width:fit-content" v-if="displayTag">
+      <p class="italic ml-auto rounded text-white px-2 bg-yellow-800" style="width:fit-content" v-if="tagname !== ''">
         <span>{{ answer.meta[tagname] }}</span>
       </p>
       <p v-if="displayTitles && answer.meta.name" class="mt-2 truncate underline">
@@ -28,7 +28,6 @@ export default Vue.extend({
   data: () => ({
     displayTitles: global.piafAgentConfig.DISPLAY_TITLES,
     displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES,
-    displayTag: global.piafAgentConfig.DISPLAY_TAG,
     tagname: global.piafAgentConfig.TAGNAME
   }),
   props: [
