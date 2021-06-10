@@ -4,6 +4,9 @@
       <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()" v-if="displayProbability">
         Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %
       </p>
+      <p class="italic ml-auto rounded text-white px-2 bg-yellow-800" style="width:fit-content" v-if="tagname !== ''">
+        <span>{{ answer.meta[tagname] }}</span>
+      </p>
       <p v-if="displayTitles && answer.meta.name" class="mt-2 truncate underline">
         {{answer.meta.name}}
       </p>
@@ -12,9 +15,6 @@
       </div>
       <a v-if="answer.meta && answer.meta.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="answer.meta.link" target="_blank"> <i></i>lien vers la fiche</a>
     </div>
-  </div>
-  <div v-else class="mb-10">
-    <p class="italic">Indice de confiance trop faible : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %. Nous ne pouvons afficher la réponse.</p>
   </div>
 </template>
 
@@ -27,7 +27,8 @@ export default Vue.extend({
   name: 'Answer',
   data: () => ({
     displayTitles: global.piafAgentConfig.DISPLAY_TITLES,
-    displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES
+    displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES,
+    tagname: global.piafAgentConfig.TAGNAME
   }),
   props: [
     'answer',
