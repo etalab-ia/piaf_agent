@@ -71,6 +71,7 @@ Create a file in `public/clients/` (you can copy any file from this directory) a
 * `DISPLAY_NAME`: Name to be displayed in the title
 * `DISPLAY_TITLES`: Do you want the title of your answers to be displayed (only if you added a title to your
   paragraphs)   
+* `ALLOW_FEEDBACK`: Do you want to allow users to give feedbacks
 * `EXAMPLE_QUESTION`: The question serving as example in the Homepage  
 * `DISPLAY_PROBABILITIES`: boolean for if you want to display the probability associated with the document
 

@@ -5,6 +5,7 @@ export interface LoadingConfig {
   TAGNAME?: string;
   DISPLAY_TITLES?: boolean;
   DISPLAY_NAME?: string;
+  ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
 }
 
