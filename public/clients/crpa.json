@@ -7,5 +7,6 @@
   "DISPLAY_PROBABILITIES": false,
   "DISPLAY_TITLES": true,
   "DISPLAY_NAME": "CRPA",
+  "ALLOW_FEEDBACK": true,
   "EXAMPLE_QUESTION": "Qu'est ce qu'un document administratif ?"
 }

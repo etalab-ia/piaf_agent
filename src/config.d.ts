@@ -4,6 +4,7 @@ export interface LoadingConfig {
   DISPLAY_PROBABILITIES?: boolean;
   DISPLAY_TITLES?: boolean;
   DISPLAY_NAME?: string;
+  ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
 }
 

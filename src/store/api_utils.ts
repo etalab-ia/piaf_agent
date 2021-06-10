@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {Feedback} from  '../feedback'
 axios.defaults.timeout = 10000;
 
 export async function callInferenceAsync(question?: string, filters?: any) {
@@ -40,5 +41,17 @@ export async function callInferenceAsync(question?: string, filters?: any) {
   } catch (error) {
     console.log(error, 'err')
     return false
+  }
+}
+
+
+export async function sendFeedbackAsync(feedback:Feedback) :Promise<string>{
+  const endpoint: string = global.piafAgentConfig.API_URL.replace('query','feedback')
+  try {
+    const res = await axios.post<Feedback, string>(endpoint, feedback);
+    return res
+  } catch (error) {
+    console.log(error, 'err')
+    return ''
   }
 }

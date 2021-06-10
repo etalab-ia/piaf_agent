@@ -7,5 +7,6 @@
   "DISPLAY_PROBABILITIES": false,
   "DISPLAY_TITLES": true,
   "DISPLAY_NAME": "Service-public",
+  "ALLOW_FEEDBACK": true,
   "EXAMPLE_QUESTION": "Combien coûte un passeport ?"
 }

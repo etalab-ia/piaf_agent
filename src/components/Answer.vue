@@ -10,7 +10,7 @@
       <div ref="answ">
         <span>{{answer.context}}</span><span v-if="answer.context.slice(-1) !== '.'">...</span>
       </div>
-      <a v-if="answer.meta && answer.meta.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="answer.meta.link" target="_blank"> <i></i>lien vers la fiche</a>
+      <a v-if="answer.meta && answer.meta.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="answer.meta.link" target="_blank" @click="sendFeedback"> <i></i>lien vers la fiche</a>
     </div>
   </div>
   <div v-else class="mb-10">
@@ -22,15 +22,19 @@
 import Vue from 'vue';
 
 import SelectText from '@vinyll/selecttext'
+import {sendFeedbackAsync} from '../store/api_utils'
+import {Feedback} from '../feedback'
 
 export default Vue.extend({
   name: 'Answer',
   data: () => ({
     displayTitles: global.piafAgentConfig.DISPLAY_TITLES,
-    displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES
+    displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES,
+    allowFeedback: global.piafAgentConfig.ALLOW_FEEDBACK
   }),
   props: [
     'answer',
+    'question',
   ],
   methods: {
     printAnswer(): void{
@@ -66,6 +70,22 @@ export default Vue.extend({
       }
       return bgColor
     },
+    sendFeedback(): void{
+      if(!this.allowFeedback){
+        return
+      }
+      const feedback: Feedback = {
+        question: this.question,
+        is_correct_answer: true,
+        document_id: this.answer.document_id,
+        model_id: this.answer.model_id,
+        is_correct_document: true,
+        answer: this.answer.answer,
+        offset_start_in_doc: this.answer.offset_start
+      }
+      sendFeedbackAsync(feedback)
+      return
+    }
   },
   beforeDestroy(): void {
     this.unsubscribe();
