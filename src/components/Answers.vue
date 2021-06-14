@@ -26,7 +26,7 @@
             <h3>Merci, nous avons pris en compte votre avis</h3>
           </div>
         </span>
-        <router-link class="rounded bg-blue-700 text-white hover:bg-blue-800 p-1" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
+        <router-link class="fr-btn" :to="{ name: 'Home' }">Poser une nouvelle question</router-link>
       </div>
       <div v-else>
         Pas de réponse pour la question <span class="italic font-bold">{{this.question}}</span><br><br>
