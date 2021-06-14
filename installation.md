@@ -1,5 +1,5 @@
 ---
-title: Instalaltion
+title: Installation
 layout: page
 permalink: /installation/
 intro_image_absolute: true
