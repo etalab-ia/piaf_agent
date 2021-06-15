@@ -26,3 +26,6 @@
   color: #42b983;
 }
 </style>
+
+<style src='@gouvfr/dsfr/dist/css/dsfr.min.css'>
+</style>

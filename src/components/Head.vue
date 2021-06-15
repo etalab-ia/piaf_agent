@@ -1,8 +1,29 @@
 <template>
   <div class="home">
     <router-link :to="{ name: 'Home' }">
-    <img alt="Piaf logo" src="../assets/logopiaf.png" style="max-height:120px;max-width:120px;" class="mx-auto mt-8"></router-link>
-    <h1 class="m-0 mt-1 text-5xl"> <span class="text-red-600">PIAF</span> & <span style="color:#47abd9">{{clientName}}</span></h1>
+      <header role="banner" class="fr-header">
+        <div class="fr-header__body">
+            <div class="fr-container">
+                <div class="fr-header__body-row">
+                    <div class="fr-header__brand fr-enlarge-link">
+                        <div class="fr-header__brand-top">
+                            <div class="fr-header__logo">
+                                <p class="fr-logo">
+                                    République
+                                    <br>Française
+                                </p>
+                            </div>
+                        </div>
+                        <div class="fr-header__service">
+                            <p class="fr-header__service-title">{{clientName}}</p>
+                          <!-- <p class="fr-header__service-tagline">subtitle</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </header>
+    </router-link>
   </div>
 </template>
 
