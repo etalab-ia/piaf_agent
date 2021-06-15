@@ -6,6 +6,8 @@
   },
   "DISPLAY_PROBABILITIES": false,
   "DISPLAY_TITLES": true,
+  "MATOMO_HOST": "https://stats.data.gouv.fr",
+  "MATOMO_ID": 181,
   "DISPLAY_NAME": "Service-public",
   "ALLOW_FEEDBACK": true,
   "EXAMPLE_QUESTION": "Combien coûte un passeport ?"

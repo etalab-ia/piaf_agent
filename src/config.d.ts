@@ -4,6 +4,8 @@ export interface LoadingConfig {
   DISPLAY_PROBABILITIES?: boolean;
   TAGNAME?: string;
   DISPLAY_TITLES?: boolean;
+  MATOMO_HOST?: string;
+  MATOMO_ID?: number;
   DISPLAY_NAME?: string;
   ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;

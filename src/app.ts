@@ -3,10 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/styles/index.css'
+import {loadMatomo} from './matomo'
 
 export const init = async (): Promise<void> => {
-  Vue.config.productionTip = false
+  if (global.piafAgentConfig.MATOMO_HOST) {
+    loadMatomo()
+  }
 
+  Vue.config.productionTip = false
   new Vue({
     router,
     store,

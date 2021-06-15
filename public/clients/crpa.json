@@ -7,6 +7,8 @@
   "DISPLAY_PROBABILITIES": false,
   "TAGNAME": "theme",
   "DISPLAY_TITLES": true,
+  "MATOMO_HOST": "https://stats.data.gouv.fr",
+  "MATOMO_ID": 181,
   "DISPLAY_NAME": "CRPA",
   "ALLOW_FEEDBACK": true,
   "EXAMPLE_QUESTION": "Qu'est ce qu'un document administratif ?"
