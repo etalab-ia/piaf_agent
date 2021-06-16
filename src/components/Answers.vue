@@ -102,9 +102,6 @@ export default Vue.extend({
           if (global.piafAgentConfig.MATOMO_HOST) {
             // first we save the rating
             window._paq.push(['trackEvent', 'search', window.location.pathname, 'rating' , this.rating])
-            // then we save the search results
-            window._paq.push(['setCustomUrl', document.URL + '&search_count=' + this.answers.length]);
-            window._paq.push(['trackPageView']);
           }
         }
       }
@@ -131,6 +128,10 @@ export default Vue.extend({
         this.ready = false
       }
     })
+
+    // then we save the search results
+    window._paq.push(['setCustomUrl', document.URL + '&search_count=' + this.answers.length]);
+    window._paq.push(['trackPageView']);
   },
 
 });
