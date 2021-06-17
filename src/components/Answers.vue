@@ -119,6 +119,14 @@ export default Vue.extend({
       if (mutation.type === 'setAnswers') {
         if (state.answers) {
           this.ready = true
+          // then we save the search results
+          window._paq.push(['trackSiteSearch',
+            // Search keyword searched for
+            this.question,
+            // Search category selected in your search engine.
+            window.location.pathname,
+            this.answers.length
+          ]);
         }
       }
     });
@@ -128,15 +136,6 @@ export default Vue.extend({
         this.ready = false
       }
     })
-
-    // then we save the search results
-    window._paq.push(['trackSiteSearch',
-      // Search keyword searched for
-      this.question,
-      // Search category selected in your search engine.
-      window.location.pathname,
-      this.answers.length
-    ]);
   },
 
 });
