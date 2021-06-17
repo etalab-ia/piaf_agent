@@ -6,6 +6,7 @@
   },
   "DISPLAY_PROBABILITIES": false,
   "DISPLAY_TITLES": true,
+  "MATOMO": {"host": "https://stats.data.gouv.fr", "site": 181},
   "DISPLAY_NAME": "CNIL",
   "ALLOW_FEEDBACK": true,
   "EXAMPLE_QUESTION": "L'utilisation de mes données personnelles doit-elle être mentionnée dans les CGU d'un site internet ?"

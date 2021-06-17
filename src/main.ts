@@ -9,6 +9,9 @@ declare global {
       piafAgentConfig: Config;
     }
   }
+  interface Window {
+      _paq:any;
+  }
 }
 
 loadConfig()
