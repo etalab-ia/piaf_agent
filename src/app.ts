@@ -6,7 +6,7 @@ import './assets/styles/index.css'
 import {loadMatomo} from './matomo'
 
 export const init = async (): Promise<void> => {
-  if (global.piafAgentConfig.MATOMO_HOST && process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     loadMatomo()
   }
 

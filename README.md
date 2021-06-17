@@ -75,7 +75,6 @@ Create a file in `public/clients/` (you can copy any file from this directory) a
 * `ALLOW_FEEDBACK`: Do you want to allow users to give feedbacks
 * `EXAMPLE_QUESTION`: The question serving as example in the Homepage  
 * `DISPLAY_PROBABILITIES`: boolean for if you want to display the probability associated with the document
-* `MATOMO_HOST`: your matomo server like "https://matomo.example.com"
-* `MATOMO_ID`: your matomo site Id
+* `MATOMO`: your matomo configuration object: server (like "https://matomo.example.com") and site Id
 
 ![search](/public/filters.png)

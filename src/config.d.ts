@@ -4,8 +4,7 @@ export interface LoadingConfig {
   DISPLAY_PROBABILITIES?: boolean;
   TAGNAME?: string;
   DISPLAY_TITLES?: boolean;
-  MATOMO_HOST?: string;
-  MATOMO_ID?: number;
+  MATOMO?: null | MatomoConfig
   DISPLAY_NAME?: string;
   ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
@@ -23,5 +22,9 @@ interface Filters {
   data: FilterData[];
 }
 
+interface MatomoConfig {
+  host?: string;
+  id?: number;
+}
 
 export type Config = Readonly<Required<LoadingConfig>>;
