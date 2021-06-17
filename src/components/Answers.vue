@@ -130,8 +130,13 @@ export default Vue.extend({
     })
 
     // then we save the search results
-    window._paq.push(['setCustomUrl', document.URL + '&search_count=' + this.answers.length]);
-    window._paq.push(['trackPageView']);
+    window._paq.push(['trackSiteSearch',
+      // Search keyword searched for
+      this.question,
+      // Search category selected in your search engine.
+      window.location.pathname,
+      this.answers.length
+    ]);
   },
 
 });
