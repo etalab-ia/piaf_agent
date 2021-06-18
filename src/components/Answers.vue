@@ -99,11 +99,11 @@ export default Vue.extend({
             offset_start_in_doc: obj.offset_start
           }
           sendFeedbackAsync(feedback)
-          if (global.piafAgentConfig.MATOMO) {
-            // first we save the rating
-            window._paq.push(['trackEvent', 'search', window.location.pathname, 'rating' , this.rating])
-          }
         }
+      }
+      if (global.piafAgentConfig.MATOMO) {
+        // we save the rating
+        window._paq.push(['trackEvent', 'search', window.location.pathname, 'rating' , this.rating])
       }
       this.ratingSent = true
     }
