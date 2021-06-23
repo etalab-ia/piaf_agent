@@ -1,7 +1,7 @@
 <template>
   <div class="mt-10 mb-4">
     <div v-if="ready">
-      <div v-if="answers.length > 0">
+      <div v-if="answers.length > 0 && answers.some((ans) => Number(ans.probability) > 0.2)">
         <Filters v-if="useFilters"/>
         <div class="my-3">
           <span class="italic font-bold">{{this.question}}</span>
