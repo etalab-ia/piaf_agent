@@ -15,8 +15,8 @@
                             </div>
                         </div>
                         <div class="fr-header__service">
-                            <p class="fr-header__service-title">{{clientName}}</p>
-                          <!-- <p class="fr-header__service-tagline">subtitle</p> -->
+                            <p class="fr-header__service-title text-left">{{clientName}}</p>
+                            <p class="fr-header__service-tagline text-left">{{clientDesc}}</p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,8 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'Head',
   data: () => ({
-    clientName: global.piafAgentConfig.DISPLAY_NAME
+    clientName: global.piafAgentConfig.DISPLAY_NAME,
+    clientDesc: global.piafAgentConfig.DISPLAY_DESCRIPTION
   }),
 });
 </script>

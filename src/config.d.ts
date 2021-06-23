@@ -6,6 +6,7 @@ export interface LoadingConfig {
   DISPLAY_TITLES?: boolean;
   MATOMO?: null | MatomoConfig
   DISPLAY_NAME?: string;
+  DISPLAY_DESCRIPTION?: string;
   ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
 }

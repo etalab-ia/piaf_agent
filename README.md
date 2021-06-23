@@ -69,6 +69,7 @@ Create a file in `public/clients/` (you can copy any file from this directory) a
 ```
 
 * `DISPLAY_NAME`: Name to be displayed in the title
+* `DISPLAY_DESCRIPTION`: Description of the service provided
 * `DISPLAY_TITLES`: Do you want the title of your answers to be displayed (only if you added a title to your
   paragraphs)   
 *  `TAGNAME` : Do you want tags to be displayed on the top right of the answer block, and which property should it be  
