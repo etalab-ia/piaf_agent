@@ -22,6 +22,7 @@ export const loadConfig = async (): Promise<Config> => {
     TAGNAME: configFromJson.TAGNAME ?? '',
     API_URL: configFromJson.API_URL,
     DISPLAY_NAME: configFromJson.DISPLAY_NAME ?? 'YOU',
+    DISPLAY_DESCRIPTION: configFromJson.DISPLAY_DESCRIPTION ?? '',
     DISPLAY_TITLES: configFromJson.DISPLAY_TITLES ?? true,
     MATOMO: configFromJson.MATOMO ?? null,
     ALLOW_FEEDBACK: configFromJson.ALLOW_FEEDBACK ?? false,
