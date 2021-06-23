@@ -4,6 +4,11 @@
       <input class="fr-input w-full max-w-screen-md w-11/12" id="question" type="text" placeholder="Poser votre question ici"
       v-on:keyup.enter="onClick" v-model="newQuestion">
     </div>
+    <div class="mx-2">
+      <p v-if="error" id="text-input-error-desc-error" class="fr-error-text">
+        {{error}}
+      </p>
+    </div>
     <button class="fr-btn" v-on:click="onClick" title="Rechercher">
       Chercher
     </button>
@@ -22,10 +27,25 @@ export default Vue.extend({
     newQuestion: '',
     exampleQuestion: global.piafAgentConfig.EXAMPLE_QUESTION
   }),
+  computed: {
+    error: function(): string {
+      if (this.newQuestion === '') {
+        return 'Votre question ne peut être vide'
+      }else if (this.newQuestion.trim().slice(-1) !== '?') {
+        return 'Votre question doit finir par un \'?\''
+      }
+      return ''
+    }
+  },
   methods: {
    onClick(){
-     this.$store.commit('setQuestion',this.newQuestion)
-     this.$router.push('Answers')
+     if (this.error === '') {
+       this.$store.commit('setQuestion',this.newQuestion)
+       this.$router.push('Answers')
+     } else {
+       return
+     }
+
    }
   },
 
