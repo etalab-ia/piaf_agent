@@ -14,7 +14,6 @@
               v-model="rating"
               :class="'flex justify-center'"
               :rating="4"
-              :increment="0.01"
               :fixed-points="2"
               :show-rating="false"
               :animate="true"
