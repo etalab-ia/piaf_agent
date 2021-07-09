@@ -29,3 +29,5 @@
 
 <style src='@gouvfr/dsfr/dist/css/dsfr.min.css'>
 </style>
+
+<script src="@gouvfr/dsfr/dist/js/dsfr.module" />

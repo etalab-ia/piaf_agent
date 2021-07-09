@@ -1,19 +1,18 @@
 <template>
-  <div class="mb-10" v-if="faq.data.length > 0">
-    FAQ
-    <div v-for="(line, i) in faq.data" :key="i + '-' + line.title">
-      <div class="mb-10">
-        <div class="alignLeft w-11/12 max-w-screen-md mx-auto mt-8 p-2 text-left border-blue-400 border-2 rounded border-solid relative">
-          <p class="mt-2 truncate underline">
-            {{line.title}}
-          </p>
-          <div>
-            <span>{{line.paragraphs[0].context}}</span>
+  <div v-if="faq.data.length > 0" class="max-w-screen-md mx-auto mt-8 p-2">
+    <h1 class="fr-display-xs">FAQ</h1>
+    <ul class="fr-accordions-group">
+      <li v-for="(line, i) in faq.data" :key="i + '-' + line.title">
+        <section class="fr-accordion">
+          <h3 class="fr-accordion__title">
+            <button class="fr-accordion__btn" aria-expanded="false" :aria-controls="'accordion-' + i">{{line.title}}</button>
+          </h3>
+          <div class="fr-collapse" :id="'accordion-' + i">
+            {{line.paragraphs[0].context}}
           </div>
-          <a v-if="line.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="line.link" target="_blank"> <i></i>lien vers la fiche</a>
-        </div>
-      </div>
-    </div>
+        </section>
+      </li>
+    </ul>
   </div>
 </template>
 
