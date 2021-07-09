@@ -15,14 +15,17 @@
     <div class="text-center text-gray-600 mt-10 italic">
       <p>ex: "{{exampleQuestion}}"</p>
     </div>
+    <FAQ />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import FAQ from "@/components/FAQ.vue";
 
 export default Vue.extend({
   name: 'Question',
+  components: { FAQ },
   data: () => ({
     newQuestion: '',
     exampleQuestion: global.piafAgentConfig.EXAMPLE_QUESTION

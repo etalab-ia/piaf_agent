@@ -9,6 +9,24 @@ export interface LoadingConfig {
   DISPLAY_DESCRIPTION?: string;
   ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
+  FAQ: Faq;
+}
+
+interface Faq {
+  version: string;
+  data: FaqData[];
+}
+
+interface FaqData {
+  title: string;
+  paragraphs: FaqDataParagraph[];
+  link: string | null;
+  // theme: string | null;
+}
+
+interface FaqDataParagraph {
+  context: string;
+  // qas: unknown;
 }
 
 interface FilterData {
