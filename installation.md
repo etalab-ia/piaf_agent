@@ -6,15 +6,17 @@ intro_image_absolute: true
 intro_image_hide_on_mobile: false
 ---
 
-# Intégrer Piaf dans mon site
+# Etapes pour intégrer Piaf dans mon site
 
 Tout d'abord, si vous etes interessés, nous pouvons vous accompagner pour intégrer Piaf sur votre plateforme (barre de recherche, chatbot...).
 Cependant, si vous êtes à l'aise, vous pouvez l'installer sans notre accompagnement puisque tous nos codes sont open-sources et faciles à comprendre.
 
+![schema](https://etalab-ia.github.io/knowledge-base/_images/work_with_piaf_onboarding.png)
 
 ### Le déroulement se fait en 3 étapes :
 1. **Extraire vos données** qui contiennent les informations destinées à vos utilisateurs, et les mettre au format SQuAD (voir plus loin)
-1. **Nous envoyer ces données**. Nous allons ensuite **créer pour vous une application dédiée (une API)** et vous mettre à disposition ses points d'accès. Cela nous prend en général 1 semaine.
+1. **Nous envoyer ces données**. Nous allons ensuite **créer pour vous une application dédiée (une API)** et vous mettre à disposition ses points d'accès. Cela nous prend en général 1 semaine. Le travail que nous effectuons à ce moment là permet de trouver les meilleurs paramètres pour optimiser les performances de votre futur moteur de recherche. Comment ? Nous allons faire lire vos textes à notre application. Ensuite, nous allons lui poser les 100 questions que vous nous avez fourni et comparer les réponses qui vont en sortir avec celles que vous nous aurez fourni.
+Nous serons alors capable de vous dire quels paramètres offrent le meilleur taux de réponse pour votre cas d'usage.
 1. **Brancher votre produit à cette API**. Ce sont les développeurs de votre site qui devront se charger de brancher les points d'accès (endpoint) en suivant la documentation Swagger qui leur sera fournie. Cette étape prend en général moins d'une journée.
 
 ### Quelques remarques :
@@ -23,20 +25,22 @@ Cependant, si vous êtes à l'aise, vous pouvez l'installer sans notre accompagn
 - En fonction de votre traffic, nous ne serons pas forcément en mesure de pouvoir tout héberger. Nous pourrons alors vous accompagner sur l'infrastructure à mettre en place.
 
 
-## Faut-il que j'entraine mon propre modèle d'IA ?
-Pour utiliser PIAF, il n'y a pas besoin d'entrainer un modèle sur vos données. Nous récupérons vos données et ajustons les paramètres des différents composants du système pour votre cas d'usage.  
-![architecture](https://etalab-ia.github.io/knowledge-base/_images/archi_piaf.png)  
+# FAQ
+
+- ## Faut-il que j'entraine mon propre modèle d'IA ?
+
+Non. Pour utiliser PIAF, il n'y a pas besoin d'entrainer un modèle sur vos données. Nous récupérons vos données et ajustons les paramètres des différents composants du système pour votre cas d'usage.  
+
 Si vous avez une quantité de pairs Question-Réponse conséquente, nous pourrons envisager le fine-tuning de notre modèle avec vos données.
 Cette procédure pourrait améliorer la performance du système, surtout si vos données utilisent une syntaxe particulière (ex: données juridiques...).
 
-## Quelles données envoyer pour proposer un cas d'usage ?
+- ## Quelles données envoyer pour proposer un cas d'usage ?
 Vos données doivent comporter les informations suivantes :
-- Une liste de contextes : C'est votre base de connaissance. Les contextes sont des textes. Il n'y a pas de contrainte sur la longueur du texte, PIAF se charge d'optimiser sa longueur pour votre cas d'usage.  
-- Des questions et des réponses pour effectuer l'évaluation. 100 minimum. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.  
+  - Une liste de contextes : C'est votre base de connaissance. Les contextes sont des textes. Il n'y a pas de contrainte sur la longueur du texte, PIAF se charge d'optimiser sa longueur pour votre cas d'usage.  
+  - Des questions et des réponses pour effectuer l'évaluation. 100 minimum. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.  
 
-![schema](https://etalab-ia.github.io/knowledge-base/_images/work_with_piaf_onboarding.png)
 
-## Quel format pour les données ?
+- ## Quel format pour les données ?
  Idéalement vos données sont envoyées sous la forme d'un json structuré de la manière suivante (en suivant le format SQuAD v2.0) :
  ```json
  {
@@ -64,8 +68,3 @@ Vos données doivent comporter les informations suivantes :
  ```
 
 Vous pouvez aussi nous envoyer vos données sous une autre forme (.csv par exemple) et nous nous occupons de les convertir pour vous.
-
-## Retour de l'évaluation
-Nous allons faire lire vos textes à notre application.
-Ensuite, nous allons lui poser les 100 questions que vous nous avez fourni et comparer les réponses qui vont en sortir avec celles que vous nous aurez fourni.
-Nous serons alors capable de vous dire à quel taux de réponse notre application est capable de répondre à votre cas d'usage.
