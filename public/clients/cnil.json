@@ -10,5 +10,41 @@
   "DISPLAY_NAME": "CNIL",
   "DISPLAY_DESCRIPTION": "Une autre façon de parcourir \"besoin d'aide\"",
   "ALLOW_FEEDBACK": true,
-  "EXAMPLE_QUESTION": "L'utilisation de mes données personnelles doit-elle être mentionnée dans les CGU d'un site internet ?"
+  "EXAMPLE_QUESTION": "L'utilisation de mes données personnelles doit-elle être mentionnée dans les CGU d'un site internet ?",
+  "FAQ": {
+    "version": "besoindaide",
+    "data": [
+      {
+        "title": "Règlement européen : faut-il encore effectuer des déclarations à la CNIL ?",
+        "paragraphs": [{"context": "Non. La quasi-totalité des formalités déclaratives auprès de la CNIL est supprimée depuis l'entrée en application du Règlement européen sur la protection des données le 25 mai 2018. Vous devez donc vous concentrer sur le respect de vos obligations de fond (finalité, pertinence, durée de conservation, droits des personnes, sécurité, documentation).","qas": [] }],
+        "link": "https://www.cnil.fr/cnil-direct/question/reglement-europeen-faut-il-encore-effectuer-des-declarations-la-cnil",
+        "theme": ""
+      },
+      {
+        "title": "Règlement européen sur la protection des données : que faut-il savoir ?",
+        "paragraphs": [{"context": "1. Où trouver le texte ? Le texte du Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données (RGPD) est publié sur : Sur le site de la CNIL ; Sur le site de l'Union Européenne. A savoir : ce Règlement abroge la directive européenne 95/46/CE. 2. Depuis quand le Règlement européen est-il applicable ? Le Règlement est applicable depuis le 25 mai 2018 (article 99.2) dans tous les pays de l'Union Européenne. Il s'applique à toutes les entreprises (y compris leurs comités d'entreprise), les administrations et les associations, qui traitent des données à caractère personnel. 3. Quels sont les changements apportés par le Règlement européen pour les professionnels ? Retrouvez toutes les informations sur les changements pour les professionnels sur le site de la CNIL : Règlement européen sur la protection des données : ce qui change pour les professionnels 4. Quels sont les changements apportés par le Règlement européen pour les citoyens ? Retrouvez toutes les informations sur les changements pour les particuliers sur le site de la CNIL : Plus de droits pour vos données !","qas": [] }],
+        "link": "https://www.cnil.fr/cnil-direct/question/reglement-europeen-sur-la-protection-des-donnees-que-faut-il-savoir",
+        "theme": ""
+      },
+      {
+        "title": "Le droit d'accès, c'est quoi ?",
+        "paragraphs": [{"context": "Vous avez le droit de savoir quelles informations les administrations, les organismes publics ou privés et les sociétés commerciales détiennent sur vous dans leurs fichiers : c'est ce qu'on appelle le droit d'accès. Ce droit d'accès s'exerce soit directement, soit indirectement.","qas": [] }],
+        "link": "https://www.cnil.fr/cnil-direct/question/le-droit-dacces-cest-quoi",
+        "theme": ""
+      },
+      {
+        "title": "La CNIL, c'est quoi ?",
+        "paragraphs": [{"context": "La Commission Nationale de l'Informatique et des Libertés (CNIL) a été créée par la loi Informatique et Libertés du 6 janvier 1978. Elle est chargée de veiller à la protection des données personnelles contenues dans les fichiers et traitements informatiques ou papiers, aussi bien publics que privés. Ainsi, elle est chargée de veiller à ce que l'informatique soit au service du citoyen et qu'elle ne porte atteinte ni à l'identité humaine, ni aux droits de l'homme, ni à la vie privée, ni aux libertés individuelles ou publiques. La CNIL est une autorité administrative indépendante (AAI), c'est-à-dire un organisme public qui agit au nom de l'Etat, sans être placé sous l'autorité du gouvernement ou d'un ministre. Elle est composée de 18 membres élus ou nommés et s'appuie sur des services. Elle a un rôle d'alerte, de conseil et d'information vers tous les publics mais dispose également d'un pouvoir de contrôle et de sanction.","qas": [] }],
+        "link": "https://www.cnil.fr/cnil-direct/question/la-cnil-cest-quoi",
+        "theme": ""
+      },
+      {
+        "title": "Numéro de sécurité sociale des enfants en école primaire : une mairie peut-elle le demander ?",
+        "paragraphs": [{"context": "Non. Pour les inscriptions scolaires, les communes peuvent demander les informations suivantes : identité de l'enfant en âge scolaire : nom, prénoms, sexe, date et lieu de naissance, adresse ; identité et adresse du responsable légal ; profession du responsable légal ; classe de l'élève ; école fréquentée, s'il s'agit d'un établissement public, et date d'entrée dans cette école. Les communes ne doivent pas enregistrer le numéro de sécurité sociale ni l'utiliser comme identifiant de l'élève.  Elles ne sont pas autorisées non plus à demander la copie de l'attestation de sécurité sociale. Cette donnée ne peut pas non plus être collectée par l'école ou les instituteurs.","qas": [] }],
+        "link": "https://www.cnil.fr/cnil-direct/question/numero-de-securite-sociale-des-enfants-en-ecole-primaire-une-mairie-peut-elle",
+        "theme": ""
+      }      
+    ]
+  }
 }
+
