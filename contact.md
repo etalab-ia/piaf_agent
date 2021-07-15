@@ -15,7 +15,6 @@ Les principaux artisans du projet Piaf sont listés ici :
 <div class="container pt-1 pb-6">
     <div class="row pt-0 pb-6">
         {% assign teams = site.team | sort: "weight" %}
-        {{teams[0].email}}
         {% for team in teams %}
         <div class="col-12 col-md-4 mb-3">
             <div class="team team-summary">
