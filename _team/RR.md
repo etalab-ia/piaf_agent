@@ -6,6 +6,6 @@ image: "https://avatars.githubusercontent.com/u/33607785?v=4"
 email: "robin.reynaud@data.gouv.fr"
 jobtitle: "Dev & Datascience"
 linkedinurl: "https://www.linkedin.com/in/RobinReynaud/"
-weight: 7
+weight: 5
 layout: team
 ---

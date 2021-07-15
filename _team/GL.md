@@ -6,6 +6,6 @@ image: "https://avatars.githubusercontent.com/u/13087916?v=4"
 email: "guillaume.lancrenon@data.gouv.fr"
 jobtitle: "Lead dev & PO"
 linkedinurl: "https://www.linkedin.com/in/guillaumelancrenon/"
-weight: 7
+weight: 3
 layout: team
 ---

@@ -6,6 +6,6 @@ image: "https://avatars.githubusercontent.com/u/70692630?v=4"
 email: "giulia.santarsieri@data.gouv.fr"
 jobtitle: "Datascience"
 linkedinurl: "https://www.linkedin.com/in/GiuliaSantarsieri/"
-weight: 7
+weight: 4
 layout: team
 ---
