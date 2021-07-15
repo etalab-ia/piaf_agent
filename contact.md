@@ -33,3 +33,5 @@ Les principaux artisans du projet Piaf sont listés ici :
         {% endfor %}
     </div>
 </div>
+
+Merci aux autres contributeurs également.
