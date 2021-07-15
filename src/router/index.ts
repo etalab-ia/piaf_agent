@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Answers from '../views/Answers.vue'
+import ViePrivee from '../views/ViePrivee.vue'
 import {clientFromUrl} from "@/client";
 
 Vue.use(VueRouter)
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
     path: '/Answers',
     name: 'Answers',
     component: Answers
+  },
+  {
+    path: '/vie-privee',
+    name: 'ViePrivee',
+    component: ViePrivee
   },
   {
     path: '/Error',
