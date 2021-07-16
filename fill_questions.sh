@@ -13,9 +13,9 @@ SQUAD_FILE="${CLIENT}_squad.json"
 QUESTIONS_FILE="${CLIENT}_questions.json"
 
 wget "https://raw.githubusercontent.com/etalab-ia/piaf-ml/master/clients/${CLIENT}/knowledge_base/squad.json" -O "${SQUAD_FILE}"
-jq -Mcr '[.data[] | select([.paragraphs[].qas[].is_impossible == false] | all) | .title] | sort | unique' > "${QUESTIONS_FILE}" < "${SQUAD_FILE}"
+jq -Mcr '[.data[] | select([.paragraphs[].qas[].is_impossible == false] | all) | .title] | sort | unique' "${SQUAD_FILE}" > "${QUESTIONS_FILE}"
 
-jq -Mcr --argfile groupInfo "${CLIENT}_questions.json" '.QUESTIONS = $groupInfo' "public/clients/${CLIENT}.json" > "public/clients/${CLIENT}_new.json"
+jq -Mcr --argfile questions "${CLIENT}_questions.json" '.QUESTIONS = $questions' "public/clients/${CLIENT}.json" > "public/clients/${CLIENT}_new.json"
 
 mv "public/clients/${CLIENT}_new.json" "public/clients/${CLIENT}.json"
 rm "${QUESTIONS_FILE}"
