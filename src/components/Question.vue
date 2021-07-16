@@ -87,3 +87,12 @@ export default Vue.extend({
 
 });
 </script>
+
+<style>
+#app .autocomplete-input:focus {
+  box-shadow: none;
+  background-color: var(--g200);
+  border-color: var(--g200);
+
+}
+</style>
