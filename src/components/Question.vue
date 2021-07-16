@@ -38,7 +38,6 @@ export default Vue.extend({
   }),
   computed: {
     error: function(): string {
-      console.log("newQuestion", this.newQuestion)
       if (this.newQuestion === '') {
         return 'Votre question ne peut être vide'
       } else if (this.newQuestion.trim().slice(-1) !== '?') {
@@ -50,9 +49,7 @@ export default Vue.extend({
   methods: {
     retrieveSuggestions(input: string) {
       if (input.length < 1) { return [] }
-      // eslint-disable-next-line
-      // @ts-ignore
-      this.newQuestion = this.$refs.autocomplete?.value;
+      this.newQuestion = input;
       return this.questions
           .filter(question => {
             return question.toLowerCase().includes(input.toLowerCase())
