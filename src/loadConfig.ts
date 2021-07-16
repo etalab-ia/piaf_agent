@@ -27,7 +27,7 @@ export const loadConfig = async (): Promise<Config> => {
     MATOMO: configFromJson.MATOMO ?? null,
     ALLOW_FEEDBACK: configFromJson.ALLOW_FEEDBACK ?? false,
     EXAMPLE_QUESTION: configFromJson.EXAMPLE_QUESTION ?? 'Quel est le coût d\'un passeport ?',
-    QUESTIONS: configFromJson.QUESTIONS ?? [],
+    AUTOCOMPLETE_QUESTIONS: configFromJson.AUTOCOMPLETE_QUESTIONS ?? { activate: false, questions: [] },
     FILTERS: configFromJson.FILTERS ?? {version: "1", data: []},
     FAQ: configFromJson.FAQ ?? {version: "1", data: []}
   };

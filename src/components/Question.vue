@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="mb-1 mt-6 fr-search-bar justify-center">
-      <autocomplete :search="retrieveSuggestions" :debounceTime="500" class="fr-input w-full max-w-screen-md w-11/12" placeholder="Poser votre question ici" @submit="handleAutoCompleteSubmit" ref="autocomplete"></autocomplete>
+      <template v-if="autocompleteQuestions.activate">
+        <autocomplete :search="retrieveSuggestions" :debounceTime="500" class="fr-input w-full max-w-screen-md w-11/12" placeholder="Poser votre question ici" @submit="handleAutoCompleteSubmit" ref="autocomplete"></autocomplete>
+      </template>
+      <template v-else>
+        <input class="fr-input w-full max-w-screen-md w-11/12" id="question" type="text" placeholder="Poser votre question ici" v-on:keyup.enter="onClick" v-model="newQuestion">
+      </template>
     </div>
     <div class="mx-2 mt-0 mb-2 flex justify-center">
       <p v-if="error" id="text-input-error-desc-error" class="fr-error-text mt-0">
@@ -34,7 +39,7 @@ export default Vue.extend({
   data: () => ({
     newQuestion: '',
     exampleQuestion: global.piafAgentConfig.EXAMPLE_QUESTION,
-    questions: global.piafAgentConfig.QUESTIONS
+    autocompleteQuestions: global.piafAgentConfig.AUTOCOMPLETE_QUESTIONS
   }),
   computed: {
     error: function(): string {
@@ -50,7 +55,7 @@ export default Vue.extend({
     retrieveSuggestions(input: string) {
       if (input.length < 1) { return [] }
       this.newQuestion = input;
-      return this.questions
+      return this.autocompleteQuestions.questions
           .filter(question => {
             return question.toLowerCase().includes(input.toLowerCase())
           })

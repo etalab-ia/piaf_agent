@@ -9,8 +9,13 @@ export interface LoadingConfig {
   DISPLAY_DESCRIPTION?: string;
   ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
-  QUESTIONS?: string[];
+  AUTOCOMPLETE_QUESTIONS?: AutoComplete;
   FAQ: Faq;
+}
+
+interface AutoComplete {
+  activate: boolean;
+  questions: string[];
 }
 
 interface Faq {
