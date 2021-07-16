@@ -77,5 +77,18 @@ Create a file in `public/clients/` (you can copy any file from this directory) a
 * `EXAMPLE_QUESTION`: The question serving as example in the Homepage  
 * `DISPLAY_PROBABILITIES`: boolean for if you want to display the probability associated with the document
 * `MATOMO`: your matomo configuration object: server (like "https://matomo.example.com") and site Id
+* `AUTOCOMPLETE_QUESTIONS`: Help users by autocompleting questions:
+```json
+{
+  "AUTOCOMPLETE_QUESTIONS": {
+    "activate": true,
+    "questions": [
+      "How can I use this tool?",
+      "What is my purpose?"
+    ]
+  }
+}
+```
+  * The questions can be retrieved from the squad.json associated to a client (see fill_questions.sh)
 
 ![search](/public/filters.png)
