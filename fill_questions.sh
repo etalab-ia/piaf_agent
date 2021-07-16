@@ -15,7 +15,7 @@ QUESTIONS_FILE="${CLIENT}_questions.json"
 
 # TODO: remove when question is impossible
 wget "https://raw.githubusercontent.com/etalab-ia/piaf-ml/master/clients/${CLIENT}/knowledge_base/squad.json" -O "${SQUAD_FILE}"
-jq -Mcr '[.data[] | .title] | sort | unique' > "${QUESTIONS_FILE}" < "${SQUAD_FILE}"
+jq -Mcr '[.data[] | select([.paragraphs[].qas[].is_impossible == false] | all) | .title] | sort | unique' > "${QUESTIONS_FILE}" < "${SQUAD_FILE}"
 
 jq -Mcr --argfile groupInfo "${CLIENT}_questions.json" '.QUESTIONS = $groupInfo' "public/clients/${CLIENT}.json" > "public/clients/${CLIENT}_new.json"
 
