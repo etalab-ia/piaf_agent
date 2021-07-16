@@ -9,6 +9,7 @@ export interface LoadingConfig {
   DISPLAY_DESCRIPTION?: string;
   ALLOW_FEEDBACK?: boolean;
   EXAMPLE_QUESTION?: string;
+  QUESTIONS?: string[];
   FAQ: Faq;
 }
 
