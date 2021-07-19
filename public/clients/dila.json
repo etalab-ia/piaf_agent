@@ -12,7 +12,7 @@
   "ALLOW_FEEDBACK": true,
   "EXAMPLE_QUESTION": "Combien coûte un passeport ?",
   "AUTOCOMPLETE_QUESTIONS": {
-    "activate": true,
+    "activate": false,
     "questions": [
       "A partir de quel montant de revenus est-ce que je commence à payer des impôts?",
       "A partir de quelle age doit-on donner ses empreintes digitales pour faire ses papiers ?",
