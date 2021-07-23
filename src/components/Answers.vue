@@ -1,7 +1,7 @@
 <template>
   <div class="mt-10 mb-4">
     <div v-if="ready">
-      <div v-if="answers.length > 0 && answers.some((ans) => Number(ans.probability) > 0.2)">
+      <div v-if="hasAnswers()">
         <Filters v-if="useFilters"/>
         <div class="my-3">
           <span class="italic font-bold">{{this.question}}</span>
@@ -47,8 +47,8 @@ import Spinner from './Spinner.vue'
 import Filters from './Filters.vue'
 import Answer from './Answer.vue'
 import StarRating from 'vue-star-rating'
-import {sendFeedbackAsync} from '../store/api_utils'
-import {Feedback} from '../feedback'
+import {sendFeedbackAsync, Answer as AnswerFromBackend} from '@/store/api_utils'
+import {Feedback} from '@/feedback'
 
 export default Vue.extend({
   name: 'Answers',
@@ -72,6 +72,9 @@ export default Vue.extend({
     StarRating
   },
   methods: {
+    hasAnswers(): boolean {
+      return this.answers.length > 0 && this.answers.some((ans: AnswerFromBackend) => (Number(ans.probability) > 0.2 || (ans?.meta?.weight ?? 0) > 50))
+    },
     // here we have to define unsubscribe (otherwise, Typescirpt says this has no funciton such as unsubscribe)
     unsubscribe(): void{
       // console.log('here');
