@@ -47,8 +47,8 @@ import Spinner from './Spinner.vue'
 import Filters from './Filters.vue'
 import Answer from './Answer.vue'
 import StarRating from 'vue-star-rating'
-import {sendFeedbackAsync, Answer as AnswerFromBackend} from '../store/api_utils'
-import {Feedback} from '../feedback'
+import {sendFeedbackAsync, Answer as AnswerFromBackend} from '@/store/api_utils'
+import {Feedback} from '@/feedback'
 
 export default Vue.extend({
   name: 'Answers',

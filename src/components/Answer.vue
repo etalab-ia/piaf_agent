@@ -22,8 +22,8 @@
 import Vue from 'vue';
 
 import SelectText from '@vinyll/selecttext'
-import {Answer as AnswerFromBackend, sendFeedbackAsync} from '../store/api_utils'
-import {Feedback} from '../feedback'
+import {sendFeedbackAsync} from '@/store/api_utils'
+import {Feedback} from '@/feedback'
 
 export default Vue.extend({
   name: 'Answer',
