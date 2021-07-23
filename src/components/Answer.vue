@@ -7,11 +7,11 @@
       <p class="flex fr-tag ml-auto" style="width:fit-content" v-if="tagname !== ''">
         <span>{{ answer.meta[tagname] }}</span>
       </p>
-      <p v-if="displayTitles && answer.meta.name" class="mt-2 truncate underline">
+      <p v-if="displayTitle()" class="mt-2 truncate underline">
         {{answer.meta.name}}
       </p>
       <div ref="answ">
-        <span>{{answer.context}}</span><span v-if="answer.context.slice(-1) !== '.'">...</span>
+        <span>{{getContext()}}</span><span v-if="getContext().slice(-1) !== '.'">...</span>
       </div>
       <a v-if="answer.meta && answer.meta.link" class="text-blue-800 hover:text-blue-600 absolute border-blue-400 border-2 rounded-lg border-solid bg-white px-1 link" :href="answer.meta.link" target="_blank" @click="sendFeedback"> <i></i>lien vers la fiche</a>
     </div>
@@ -28,7 +28,6 @@ import {Feedback} from '@/feedback'
 export default Vue.extend({
   name: 'Answer',
   data: () => ({
-    displayTitles: global.piafAgentConfig.DISPLAY_TITLES,
     displayProbability: global.piafAgentConfig.DISPLAY_PROBABILITIES,
     allowFeedback: global.piafAgentConfig.ALLOW_FEEDBACK,
     tagname: global.piafAgentConfig.TAGNAME
@@ -38,20 +37,35 @@ export default Vue.extend({
     'question',
   ],
   methods: {
+    answerified() {
+      return this.answer.meta.answerified ?? false
+    },
+    displayTitle(): boolean {
+      return global.piafAgentConfig.DISPLAY_TITLES && this.answer.meta.name
+    },
     displayAnswer(): boolean {
       return Number(this.answer.probability) > 0.2 || (this.answer?.meta?.weight ?? 0) > 50
+    },
+    getContext(): string {
+      if (this.answerified()) {
+        return this.answer.context.substring(0, 200)
+      } else {
+        return  this.answer.context
+      }
     },
     printAnswer(): void{
       const paragraph: any = this.$refs.answ
       if (!paragraph) {
         return
       }
-      const selector = new SelectText(paragraph)
-      selector.addSelection(paragraph.textContent.indexOf(this.answer.answer),this.answer.answer.length)
+      if (!this.answerified()) {
+        const selector = new SelectText(paragraph)
+        selector.addSelection(paragraph.textContent.indexOf(this.answer.answer), this.answer.answer.length)
 
-      // here we have to clone this to remove the addeventlistner that selects text
-      const elClone = selector.container.cloneNode(true);
-      paragraph.parentNode.replaceChild(elClone, paragraph);
+        // here we have to clone this to remove the addeventlistner that selects text
+        const elClone = selector.container.cloneNode(true);
+        paragraph.parentNode.replaceChild(elClone, paragraph);
+      }
     },
     // here we have to define unsubscribe (otherwise, Typescirpt says this has no funciton such as unsubscribe)
     unsubscribe(): void{

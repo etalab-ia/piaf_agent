@@ -19,6 +19,7 @@ export interface Answer {
 
 interface Meta {
   weight?: number;
+  answerified?: boolean;
 }
 
 
