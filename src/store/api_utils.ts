@@ -2,19 +2,27 @@ import axios from 'axios'
 import {Feedback} from  '../feedback'
 axios.defaults.timeout = 10000;
 
+interface ServerResponse {
+  data: InferenceResult;
+}
+interface InferenceResult {
+  query: string;
+  answers: Array<Answer>;
+}
+
+export interface Answer {
+  answer: string;
+  context: string;
+  probability: number;
+  meta: Meta;
+}
+
+interface Meta {
+  weight?: number;
+}
+
+
 export async function callInferenceAsync(question?: string, filters?: any) {
-  interface ServerResponse {
-    data: InferenceResult;
-  }
-  interface InferenceResult {
-    query: string;
-    answers: Array<Answer>;
-  }
-  interface Answer {
-    answer: string;
-    context: string;
-    probability: number;
-  }
 
   interface Query {
     query: string;

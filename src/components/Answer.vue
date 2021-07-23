@@ -1,5 +1,5 @@
 <template>
-  <div v-if="Number(answer.probability) > 0.20" class="mb-10">
+  <div v-if="displayAnswer()" class="mb-10">
     <div class="alignLeft paragraph w-11/12 max-w-screen-md mx-auto mt-8 p-2 text-left border-blue-400 border-2 rounded border-solid relative">
       <p class="italic text-left rounded text-white px-2" style="width:fit-content" v-bind:class="bgColorTrust()" v-if="displayProbability">
         Indice de confiance : {{ Number(answer.probability * 100).toLocaleString('fr',{maximumSignificantDigits:2}) }} %
@@ -22,7 +22,7 @@
 import Vue from 'vue';
 
 import SelectText from '@vinyll/selecttext'
-import {sendFeedbackAsync} from '../store/api_utils'
+import {Answer as AnswerFromBackend, sendFeedbackAsync} from '../store/api_utils'
 import {Feedback} from '../feedback'
 
 export default Vue.extend({
@@ -38,6 +38,9 @@ export default Vue.extend({
     'question',
   ],
   methods: {
+    displayAnswer(): boolean {
+      return Number(this.answer.probability) > 0.2 || (this.answer?.meta?.weight ?? 0) > 50
+    },
     printAnswer(): void{
       const paragraph: any = this.$refs.answ
       if (!paragraph) {
