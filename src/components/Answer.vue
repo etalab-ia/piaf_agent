@@ -41,7 +41,7 @@ export default Vue.extend({
       return this.answer.meta.answerified ?? false
     },
     displayTitle(): boolean {
-      return !(this.answerified()) && global.piafAgentConfig.DISPLAY_TITLES && this.answer.meta.name
+      return global.piafAgentConfig.DISPLAY_TITLES && this.answer.meta.name
     },
     displayAnswer(): boolean {
       return Number(this.answer.probability) > 0.2 || (this.answer?.meta?.weight ?? 0) > 50
